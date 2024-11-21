@@ -19,3 +19,70 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* 水色背景のサブタイトル用のCSS */
+.label-container {
+  background-color: #e0f2ff; /* 背景色 */
+  color: #0000ff; /* テキストの色 */
+  padding: 10px; /* テキストの上下左右の余白 */
+  padding-left: 20px; /* 左側の余白を追加 */
+  border-radius: 10px; /* 角の丸み */
+  width: 100%; /* スマートフォン幅に合わせる */
+  max-width: 360px; /* 必要に応じて幅の上限を設定 */
+  margin: 0 auto; /* 要素を中央揃えにする */
+  text-align: left; /* 文字を左寄せにする */
+  box-sizing: border-box; /* パディングを含めた幅を計算 */
+  font-weight: bold; /* 太字にする */
+}
+
+/* 以下すべてボタン用のCSS */
+.app-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* ボタンの間隔 */
+}
+
+.app-selectable-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  width: 100%; /* 幅を全体に広げる */
+  max-width: 400px; /* 最大幅を設定（必要に応じて変更） */
+}
+
+.app-selectable-button:hover {
+  border-color: #007bff;
+}
+
+.app-selectable-button:focus {
+  outline: none; /* デフォルトのアウトラインを削除 */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* フォーカス時の影 */
+  border-color: #007bff; /* フォーカス時のボーダー色 */
+}
+
+.app-selectable-button.selected {
+  background-color: #e0f2ff; /* 選択時の背景色 */
+  border: 2px solid #007bff; /* 選択時のボーダー色 */
+  color: #007bff; /* 選択時の文字色 */
+  font-weight: bold; /* 選択時の文字を太字 */
+}
+
+/* モバイル向け */
+@media (max-width: 768px) {
+  .app-button-container {
+    gap: 8px; /* モバイルでは間隔を狭くする */
+  }
+
+  .app-selectable-button {
+    padding: 8px 16px; /* ボタンのパディングを小さくする */
+    font-size: 14px; /* フォントサイズを調整 */
+    width: 100%; /* モバイルでも幅を全体に広げる */
+  }
+}
