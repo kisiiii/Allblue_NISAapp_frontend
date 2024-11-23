@@ -8,7 +8,7 @@ const SelectButton = ({label, index, selectedIndex, onSelect}) => {
         <div className="my-1 text-xs">
             <button
                     // 親コンポーネントから渡されるselectedIndex中にボタンのindexが含まれていれば選択状態のCSSを適用
-                    className={`app-selectable-button ${selectedIndex.includes(index) ? 'selected' : ''}`}
+                    className={`w-full h-full app-selectable-button ${selectedIndex.includes(index) ? 'selected' : ''}`}
                     // クリックしたら親コンポーネントで指定して渡されている関数onSelectを実行
                     onClick={() => onSelect(index)}
                 >
