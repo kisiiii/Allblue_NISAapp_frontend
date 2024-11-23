@@ -29,7 +29,7 @@ body {
   padding-left: 20px; /* 左側の余白を追加 */
   border-radius: 10px; /* 角の丸み */
   width: 100%; /* スマートフォン幅に合わせる */
-  max-width: 360px; /* 必要に応じて幅の上限を設定 */
+  /*max-width: 360px; /* 必要に応じて幅の上限を設定 */
   margin: 0 auto; /* 要素を中央揃えにする */
   text-align: left; /* 文字を左寄せにする */
   box-sizing: border-box; /* パディングを含めた幅を計算 */
@@ -53,8 +53,8 @@ body {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
-  width: 100%; /* 幅を全体に広げる */
-  max-width: 400px; /* 最大幅を設定（必要に応じて変更） */
+  /*width: 100%; /* 幅を全体に広げる */
+  /*max-width: 400px; /* 最大幅を設定（必要に応じて変更） */
 }
 
 .app-selectable-button:hover {
