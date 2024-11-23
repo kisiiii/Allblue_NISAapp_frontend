@@ -25,9 +25,9 @@ export default function Home() {
 
             <div className='container mx-auto w-4/5 mb-5'>
                 <div className="label-container">生年月日</div>
-                <div className="grid grid-flow-col justify-stretch mt-2">
+                <div className="grid grid-cols-3 gap-x-1 mx-1 justify-stretch mt-2">
                     <select
-                        className="select select-bordered mx-1"
+                        className="w-full select select-bordered"
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
                     >
@@ -38,7 +38,7 @@ export default function Home() {
                         <option value="1991">1991</option>
                     </select>
                     <select
-                        className="select select-bordered mx-1"
+                        className="w-full select select-bordered"
                         value={month}
                         onChange={(e) => setMonth(e.target.value)}
                     >
@@ -52,7 +52,7 @@ export default function Home() {
                         ))}
                     </select>
                     <select
-                        className="select select-bordered mx-1"
+                        className="w-full select select-bordered"
                         value={day}
                         onChange={(e) => setDay(e.target.value)}
                     >
