@@ -19,16 +19,30 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: "20.x"
+
+      # 環境変数を設定する
+      - name: Set environment variables
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> $GITHUB_ENV
 
       - name: npm install, build, and test
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }} # GitHub Secretsから環境変数を渡す
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
 
+      - name: Copy artifact for deployment job
+        run: |
+          mkdir deploy
+          if [ -d ".next/standalone/" ]; then cp -r ./.next/standalone/. ./deploy; fi
+          if [ -d "./public" ]; then cp -r ./public ./deploy; fi
+          if [ -d ".next/static/" ]; then cp -r ./.next/static/. ./deploy/.next/static; fi
+
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./deploy -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -40,9 +54,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
@@ -51,12 +65,12 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
-      - name: 'Deploy to Azure Web App'
+
+      - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'tech0-gen-7-step4-student-finalapp-13'
-          slot-name: 'Production'
-          package: .
+          app-name: "tech0-gen-7-step4-student-finalapp-13"
+          slot-name: "Production"
+          package: ./deploy
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B42F4225F164F8D90FCF47B06D99C53 }}
