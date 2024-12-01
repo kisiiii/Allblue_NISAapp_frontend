@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function ActionButton({ text, type }) {
+export function FooterButton({ text, type }) {
   return (
     <div className="flex flex-col">
       <div
@@ -20,3 +20,5 @@ export function ActionButton({ text, type }) {
     </div>
   );
 }
+
+export default FooterButton;

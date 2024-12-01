@@ -15,3 +15,5 @@ export function InvestmentCard({ type, amount, total, chartSrc }) {
     </div>
   );
 }
+
+export default InvestmentCard;

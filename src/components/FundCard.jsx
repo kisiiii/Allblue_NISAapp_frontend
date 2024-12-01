@@ -11,3 +11,5 @@ export function FundCard({ funds }) {
     </div>
   );
 }
+
+export default FundCard;

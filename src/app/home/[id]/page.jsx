@@ -1,9 +1,11 @@
+"use client";
+
 import * as React from "react";
-import { MenuButton } from "../../../components/MenuButton";
+import { HeaderMenu } from "../../../components/HeaderMenu";
 import { AssetCard } from "../../../components/AssetCard";
 import { InvestmentCard } from "../../../components/InvestmentCard";
 import { FundCard } from "../../../components/FundCard";
-import { ActionButton } from "../../../components/ActionButton";
+import { FooterButton } from "../../../components/FooterButton";
 
 function DashboardLayout() {
   const investmentData = [
@@ -29,7 +31,7 @@ function DashboardLayout() {
     { name: "eMAXIS Slim 米国株式（S&P500）", amount: "10,000" },
   ];
 
-  const actionButtons = [
+  const footerButtons = [
     { text: "口座確認", type: "single" },
     { text: "商品検索", type: "single" },
     { text: "個人\nランキング", type: "double" },
@@ -38,15 +40,7 @@ function DashboardLayout() {
 
   return (
     <div className="flex overflow-hidden flex-col pb-5 mx-auto w-full bg-gray-200 max-w-[480px]">
-      <div className="flex gap-5 justify-between py-3 pr-20 pl-4 text-xs font-bold leading-snug text-center text-white whitespace-nowrap bg-indigo-900">
-        <MenuButton />
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8c8959ebeef5ce10df57c44eeeabb40228ac34f5f4cfe8c23acc2de827c44861?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
-          alt="Dashboard logo"
-          className="object-contain shrink-0 my-auto max-w-full aspect-[4.69] w-[183px]"
-        />
-      </div>
+      <HeaderMenu />
       <div className="flex flex-col items-start px-3.5 mt-7 w-full">
         <div className="text-2xl font-bold text-black">運用資産状況</div>
         <AssetCard />
@@ -68,8 +62,8 @@ function DashboardLayout() {
         <div className="mt-6 text-2xl font-bold text-black">保有ファンド</div>
         <FundCard funds={fundData} />
         <div className="flex gap-3 mt-6 text-sm font-extrabold leading-loose text-center text-white whitespace-nowrap">
-          {actionButtons.map((button, index) => (
-            <ActionButton key={index} {...button} />
+          {footerButtons.map((button, index) => (
+            <FooterButton key={index} {...button} />
           ))}
         </div>
       </div>

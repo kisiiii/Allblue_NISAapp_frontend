@@ -16,3 +16,5 @@ export function AssetCard() {
     </div>
   );
 }
+
+export default AssetCard;
