@@ -4,40 +4,42 @@ import * as React from "react";
 import { HeaderMenu } from "../../../../components/HeaderMenu";
 import { RankingCard } from "../../../../components/RankingCard";
 
-const rankingData = [
-  {
-    rank: 1,
-    fundName: "eMAXIS Slim 米国株式（S&P500）",
-    price: "33,175",
-    priceChange: "+131",
-  },
-  {
-    rank: 2,
-    fundName: "eMAXIS Slim 米国株式（S&P500）",
-    price: "33,175",
-    priceChange: "+131",
-  },
-  {
-    rank: 3,
-    fundName: "eMAXIS Slim 米国株式（S&P500）",
-    price: "33,175",
-    priceChange: "+131",
-  },
-  {
-    rank: 4,
-    fundName: "eMAXIS Slim 米国株式（S&P500）",
-    price: "33,175",
-    priceChange: "+131",
-  },
-  {
-    rank: 5,
-    fundName: "eMAXIS Slim 米国株式（S&P500）",
-    price: "33,175",
-    priceChange: "+131",
-  },
-];
+function PopularProducts() {
+  const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
 
-export function RankingPage() {
+  const rankingData = [
+    {
+      rank: 1,
+      fundName: "eMAXIS Slim 米国株式（S&P500）",
+      price: "33,175",
+      priceChange: "+131",
+    },
+    {
+      rank: 2,
+      fundName: "eMAXIS Slim 米国株式（S&P500）",
+      price: "33,175",
+      priceChange: "+131",
+    },
+    {
+      rank: 3,
+      fundName: "eMAXIS Slim 米国株式（S&P500）",
+      price: "33,175",
+      priceChange: "+131",
+    },
+    {
+      rank: 4,
+      fundName: "eMAXIS Slim 米国株式（S&P500）",
+      price: "33,175",
+      priceChange: "+131",
+    },
+    {
+      rank: 5,
+      fundName: "eMAXIS Slim 米国株式（S&P500）",
+      price: "33,175",
+      priceChange: "+131",
+    },
+  ];
+
   return (
     <div className="flex overflow-hidden flex-col pb-10 mx-auto w-full bg-gray-200 max-w-[480px]">
       <HeaderMenu />
@@ -64,19 +66,60 @@ export function RankingPage() {
         <h2 className="self-start mt-12 text-xl font-bold text-black">
           運用益上位10％ユーザーの人気商品
         </h2>
-        <div className="flex flex-col px-px pb-5 mt-5 w-full bg-white rounded-md">
-          <div className="flex items-start w-full text-base leading-snug text-center whitespace-nowrap border-b-2 border-cyan-500">
-            <button className="overflow-hidden flex-1 shrink gap-2.5 self-stretch px-6 py-5 font-bold text-white bg-sky-500 rounded-lg min-h-[64px]">
+        <div className="flex flex-col pb-6 mt-5 w-full leading-none bg-white rounded-md">
+          <div className="flex">
+            <div
+              className={`flex-1 text-center py-3 font-bold cursor-pointer ${
+                activeTab === "つみたて投資枠"
+                  ? "bg-indigo-900 text-white rounded-t-lg"
+                  : "bg-white text-gray-800 border border-gray-300"
+              }`}
+              onClick={() => setActiveTab("つみたて投資枠")}
+            >
               つみたて投資枠
-            </button>
-            <button className="flex-1 shrink gap-2.5 self-stretch px-6 py-5 font-medium bg-white rounded-none border-t-2 border-r border-l border-zinc-300 min-h-[64px] text-zinc-800">
+            </div>
+            <div
+              className={`flex-1 text-center py-3 font-bold cursor-pointer ${
+                activeTab === "成長投資枠"
+                  ? "bg-indigo-900 text-white rounded-t-lg"
+                  : "bg-white text-gray-800 border border-gray-300"
+              }`}
+              onClick={() => setActiveTab("成長投資枠")}
+            >
               成長投資枠
-            </button>
+            </div>
           </div>
-          <div className="flex flex-col gap-5 mt-5">
-            {rankingData.map((item, index) => (
-              <RankingCard key={index} {...item} />
-            ))}
+          <div className="p-4">
+            {activeTab === "つみたて投資枠" && (
+              <div className="flex flex-col">
+                <div className="text-lg font-bold text-indigo-900">
+                  つみたて投資枠ランキング
+                </div>
+                <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
+                  積立額
+                </div>
+                <div className="flex flex-col gap-5 mt-5">
+                  {rankingData.map((item, index) => (
+                    <RankingCard key={index} {...item} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {activeTab === "成長投資枠" && (
+              <div className="flex flex-col">
+                <div className="text-lg font-bold text-indigo-900">
+                  成長投資枠ランキング
+                </div>
+                <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
+                  積立額
+                </div>
+                <div className="flex flex-col gap-5 mt-5">
+                  {rankingData.map((item, index) => (
+                    <RankingCard key={index} {...item} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <button className="self-center px-16 py-5 mt-10 w-full text-xl font-bold text-center text-white whitespace-nowrap bg-indigo-900 rounded-lg max-w-[318px]">
@@ -87,4 +130,4 @@ export function RankingPage() {
   );
 }
 
-export default RankingPage;
+export default PopularProducts;

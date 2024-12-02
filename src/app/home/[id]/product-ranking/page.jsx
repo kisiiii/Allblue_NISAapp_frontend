@@ -6,7 +6,7 @@ import { RankingCard } from "../../../../components/RankingCard";
 import AttributeButton from "../../../../components/AttributeButton";
 
 function PopularProducts() {
-  const [activeTab, setActiveTab] = React.useState("積み立て投資枠");
+  const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
 
   const rankingData = [
     {
@@ -87,13 +87,13 @@ function PopularProducts() {
           <div className="flex">
             <div
               className={`flex-1 text-center py-3 font-bold cursor-pointer ${
-                activeTab === "積み立て投資枠"
+                activeTab === "つみたて投資枠"
                   ? "bg-indigo-900 text-white rounded-t-lg"
                   : "bg-white text-gray-800 border border-gray-300"
               }`}
-              onClick={() => setActiveTab("積み立て投資枠")}
+              onClick={() => setActiveTab("つみたて投資枠")}
             >
-              積み立て投資枠
+              つみたて投資枠
             </div>
             <div
               className={`flex-1 text-center py-3 font-bold cursor-pointer ${
@@ -114,13 +114,13 @@ function PopularProducts() {
           </div>
 
           <div className="p-4">
-            {activeTab === "積み立て投資枠" && (
+            {activeTab === "つみたて投資枠" && (
               <div className="flex flex-col">
                 <div className="text-lg font-bold text-indigo-900">
-                  積み立て投資枠ランキング
+                  つみたて投資枠ランキング
                 </div>
                 <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
-                  積み立て額
+                  積立額
                 </div>
                 <div className="flex flex-col gap-5 mt-5">
                   {rankingData.map((item, index) => (
@@ -135,7 +135,7 @@ function PopularProducts() {
                   成長投資枠ランキング
                 </div>
                 <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
-                  積み立て額
+                  積立額
                 </div>
                 <div className="flex flex-col gap-5 mt-5">
                   {rankingData.map((item, index) => (
