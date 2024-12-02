@@ -106,6 +106,13 @@ function PopularProducts() {
               成長投資枠
             </div>
           </div>
+          <div className="flex flex-wrap gap-3 justify-center self-center mt-5 w-full text-xs font-bold text-center text-black whitespace-nowrap max-w-[325px]">
+            <AttributeButton label="年代" isSelected={true} />
+            <AttributeButton label="年収" isSelected={false} />
+            <AttributeButton label="投資額" isSelected={true} />
+            <AttributeButton label="家族構成" isSelected={false} />
+          </div>
+
           <div className="p-4">
             {activeTab === "積み立て投資枠" && (
               <div className="flex flex-col">
