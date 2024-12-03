@@ -1,14 +1,69 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import Chart from "chart.js/auto";
 
-export function AssetTransition() {
+export function AssetTransition({ labels, dataset1, dataset2 }) {
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = chartRef.current.getContext("2d");
+
+    const chartInstance = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Dataset 1",
+            data: dataset1,
+            borderColor: "#36A2EB",
+            backgroundColor: "rgba(54, 162, 235, 0.5)",
+            fill: true,
+            tension: 0.3,
+          },
+          {
+            label: "Dataset 2",
+            data: dataset2,
+            borderColor: "#FF6384",
+            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            fill: true,
+            tension: 0.3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "年月",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "金額 (円)",
+            },
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            position: "top",
+          },
+        },
+      },
+    });
+
+    return () => {
+      chartInstance.destroy();
+    };
+  }, [labels, dataset1, dataset2]);
+
   return (
-    <div className="flex flex-col px-1 pt-1.5 pb-28 mt-4 bg-white rounded-md">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5870b7a8d8b1778767b0d607ec9fda6bdc7d1178ea8371c40311b8b40e887151?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
-        alt="Asset trend chart"
-        className="object-contain mb-0 w-full aspect-[2.84]"
-      />
+    <div className="flex flex-col px-1 pt-1.5 pb-28 mt-4 bg-white rounded-md h-[400px]">
+      <canvas ref={chartRef} className="w-full h-full" />
     </div>
   );
 }

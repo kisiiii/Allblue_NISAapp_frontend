@@ -13,7 +13,7 @@ function DashboardLayout() {
   const balance = 1500000;
   const income = 500000;
 
-  //本年の投資額データ
+  //本年のNisa投資額データ
   const investmentData = [
     {
       type: "つみたて投資枠",
@@ -26,6 +26,30 @@ function DashboardLayout() {
       total: "2,400,000",
     },
   ];
+
+  // 資産推移データ
+  const assetTransitionData = {
+    labels: [
+      "2024/1",
+      "2024/2",
+      "2024/3",
+      "2024/4",
+      "2024/5",
+      "2024/6",
+      "2024/7",
+      "2024/8",
+      "2024/9",
+      "2024/10",
+    ],
+    dataset1: [
+      100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000,
+      1000000,
+    ],
+    dataset2: [
+      50000, 120000, 180000, 290000, 350000, 400000, 490000, 540000, 670000,
+      700000,
+    ],
+  };
 
   //保有ファンドデータ
   const fundData = [
@@ -60,7 +84,7 @@ function DashboardLayout() {
 
         <div className="mt-6 text-2xl font-bold text-black">資産推移</div>
         {/* ↓資産推移グラフ */}
-        <AssetTransition />
+        <AssetTransition {...assetTransitionData} />
 
         <div className="mt-6 text-2xl font-bold text-black">保有ファンド</div>
         {/* ↓保有商品表示 */}
