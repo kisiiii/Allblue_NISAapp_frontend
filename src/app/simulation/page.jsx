@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import SelectArea from "./components/select_area.jsx";
 import MultipleSelectArea from "./components/multiple_select_area.jsx";
+import { Tittle } from "../../components/Tittle";
 
 export default function Home() {
   const [year, setYear] = useState(""); // 年の選択状態
@@ -70,9 +72,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center mt-12 gap-4">
+    <div className="flex overflow-hidden flex-col mx-auto max-w-[480px]">
       <div className="mb-5">
-        <img src="../NISAPO_logo.png" alt="logo" className="w-48" />
+        <Tittle />
       </div>
 
       <div className="container mx-auto w-4/5 mb-5">
@@ -162,9 +164,12 @@ export default function Home() {
           <SelectArea labelList={monthly_consumption} n_cols={2} />
         </div>
       </div>
-      <button className="btn bg-blue-800 text-white mx-auto w-4/5 mb-5">
+      <Link
+        href="/simulation-result"
+        className="btn bg-blue-800 text-white mx-auto w-4/5 mb-5"
+      >
         結果を見る
-      </button>
+      </Link>
     </div>
   );
 }
