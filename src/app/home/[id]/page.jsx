@@ -17,17 +17,13 @@ function DashboardLayout() {
   const investmentData = [
     {
       type: "つみたて投資枠",
-      amount: "00,000",
+      amount: "100,000",
       total: "1,200,000",
-      chartSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/08bfc4c71b1993d502fef72348276e1fefdec880cd83185b1e3b0c97054dec5d?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd",
     },
     {
       type: "成長投資枠",
-      amount: "00,000",
+      amount: "100,000",
       total: "2,400,000",
-      chartSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/fca0e14922527609bd2c71c0e6ba7fc6b72eb40f709ed2a0580b8aecfb8ca223?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd",
     },
   ];
 
