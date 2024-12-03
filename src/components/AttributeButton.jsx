@@ -1,18 +1,17 @@
 import * as React from "react";
 
-function AttributeButton({ label, isSelected }) {
+export function AttributeButton({ label, isSelected, onClick }) {
   return (
-    <div className="flex flex-col flex-1">
-      <div
-        className={`px-12 py-3.5 rounded-[30px] ${
-          isSelected
-            ? "bg-indigo-200 border-blue-800"
-            : "bg-white border-zinc-400"
-        } border border-solid`}
-      >
-        {label}
-      </div>
-    </div>
+    <button
+      className={`flex items-center justify-center px-6 h-12 w-auto rounded-full border ${
+        isSelected
+          ? "bg-indigo-200 border-blue-800 text-blue-800"
+          : "bg-gray-200 border-gray-400 text-gray-600 hover:bg-gray-300"
+      } text-sm`}
+      onClick={onClick}
+    >
+      {label}
+    </button>
   );
 }
 
