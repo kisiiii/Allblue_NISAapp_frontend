@@ -2,11 +2,15 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import SelectArea from "./components/select_area.jsx";
-import MultipleSelectArea from "./components/multiple_select_area.jsx";
-import { Tittle } from "../../components/Tittle";
+import { useParams } from "next/navigation";
+import SelectArea from "../../../../components/select_area";
+import MultipleSelectArea from "../../../../components/multiple_select_area";
+import { Tittle } from "../../../../components/Tittle";
 
 export default function Home() {
+  const params = useParams();
+  const { id } = params;
+
   const [year, setYear] = useState(""); // 年の選択状態
   const [month, setMonth] = useState(""); // 月の選択状態
   const [day, setDay] = useState(""); // 日の選択状態
@@ -165,7 +169,7 @@ export default function Home() {
         </div>
       </div>
       <Link
-        href="/simulation-result"
+        href={`/intro/${id}/simulation-result`}
         className="btn bg-blue-800 text-white mx-auto w-4/5 mb-5"
       >
         結果を見る
