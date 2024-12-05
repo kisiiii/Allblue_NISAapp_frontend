@@ -53,14 +53,14 @@ function PopularProducts() {
     <div className="flex overflow-hidden flex-col pb-10 mx-auto w-full bg-gray-200 max-w-[480px]">
       <HeaderMenu />
       <main className="flex flex-col px-3.5 mt-6 w-full">
-        <h1 className="self-start text-2xl font-bold text-black">
+        <div className="self-start text-2xl font-bold text-black">
           個人ランキング
-        </h1>
+        </div>
         {/* ↓個人ランキング表示 */}
         <PersonalRanking myRanking={myRanking} parameter={parameter} />
 
-        <h2 className="self-start mt-12 text-xl font-bold text-black">
-          運用益上位10％ユーザーの人気商品
+        <h2 className="self-start mt-12 text-2xl font-bold text-black">
+          運用益上位のユーザーが購入している人気商品ランキング
         </h2>
 
         <div className="flex flex-col pb-6 mt-5 w-full leading-none bg-white rounded-md">

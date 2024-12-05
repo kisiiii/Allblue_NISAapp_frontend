@@ -7,18 +7,17 @@ export function AssetCard({ balance, income }) {
   const formattedPercentage = income >= 0 ? `+${percentage}` : `${percentage}`;
 
   return (
-    <div className="flex flex-col items-center pt-3 pb-11 mt-3 font-bold text-center whitespace-nowrap bg-white rounded-md">
-      <div className="text-xl text-black w-[251px]">
-        資産残高
-        <br />
+    <div className="flex flex-col items-center px-3.5 pt-3 pb-11 mt-3 w-full font-bold text-center whitespace-nowrap bg-white rounded-md">
+      <div className="text-xl text-black mx-auto">資産残高</div>
+      <div className="text-5xl text-indigo-900 my-7 mx-auto">
         {balance.toLocaleString()}円
       </div>
       <div className="shrink-0 self-stretch mt-1 h-px border border-solid border-zinc-400" />
-      <div className="mt-10 text-base">運用収益額</div>
-      <div className="mt-10 text-base text-indigo-900">
+      <div className="text-xl mt-10 text-base">運用収益額</div>
+      <div className="text-3xl mt-10 text-base text-indigo-900">
         {income.toLocaleString()}円（{formattedPercentage}％）
       </div>
-      <div className="shrink-0 mt-2 max-w-full h-px border border-solid border-zinc-400 w-[312px]" />
+      <div className="shrink-0 self-stretch mt-2 h-px border border-solid border-zinc-400" />
     </div>
   );
 }

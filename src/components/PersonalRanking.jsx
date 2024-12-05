@@ -2,7 +2,7 @@ import React from "react";
 
 export function PersonalRanking({ myRanking, parameter }) {
   return (
-    <div className="flex flex-col pt-6 pr-11 pb-20 pl-5 mt-6 text-black whitespace-nowrap bg-white rounded-md">
+    <div className="flex flex-col pt-6 pr-11 pb-20 pl-5 mt-4 text-black whitespace-nowrap bg-white rounded-md">
       <p className="text-base">
         あなたと同じ時期に開始したユーザーの中で
         <br />

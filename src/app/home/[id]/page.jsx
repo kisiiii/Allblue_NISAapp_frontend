@@ -3,8 +3,8 @@
 import * as React from "react";
 import { HeaderMenu } from "../../../components/HeaderMenu";
 import { AssetCard } from "../../../components/AssetCard";
-import { AssetTransition } from "../../../components/AssetTransition";
 import { InvestmentCard } from "../../../components/InvestmentCard";
+import { AssetTransition } from "../../../components/AssetTransition";
 import { FundCard } from "../../../components/FundCard";
 import { FooterButton } from "../../../components/FooterButton";
 
@@ -75,23 +75,28 @@ function DashboardLayout() {
         <AssetCard balance={balance} income={income} />
 
         <div className="mt-7 text-2xl font-bold text-black">本年の投資額</div>
-        <div className="flex gap-3 py-5 pr-3 mt-3 font-bold text-center text-black whitespace-nowrap bg-white rounded-md">
+        <div className="flex flex-wrap gap-3 py-5 mt-3 w-full font-bold text-center text-black whitespace-nowrap bg-white rounded-md">
           {/* Nisa残高表示 */}
           {investmentData.map((data, index) => (
-            <InvestmentCard key={index} {...data} />
+            <div
+              key={index}
+              className="flex-1 min-w-[150px] md:min-w-[200px] flex justify-center"
+            >
+              <InvestmentCard {...data} />
+            </div>
           ))}
         </div>
 
-        <div className="mt-6 text-2xl font-bold text-black">資産推移</div>
+        <div className="mt-7 text-2xl font-bold text-black">資産推移</div>
         {/* ↓資産推移グラフ */}
         <AssetTransition {...assetTransitionData} />
 
-        <div className="mt-6 text-2xl font-bold text-black">保有ファンド</div>
+        <div className="mt-7 text-2xl font-bold text-black">保有ファンド</div>
         {/* ↓保有商品表示 */}
         <FundCard funds={fundData} />
 
-        <div className="flex gap-3 mt-6 text-sm font-extrabold leading-loose text-center text-white whitespace-nowrap">
-          {/* ↓フッターメニュー */}
+        <div className="flex flex-wrap justify-evenly w-full items-center gap-3 mt-6 text-sm font-extrabold text-center text-white">
+          {/* フッターメニュー */}
           {footerButtons.map((button, index) => (
             <FooterButton key={index} {...button} />
           ))}
