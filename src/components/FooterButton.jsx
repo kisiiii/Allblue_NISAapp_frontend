@@ -2,10 +2,10 @@ import * as React from "react";
 
 export function FooterButton({ text, type }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center justify-center">
       <div
-        className={`px-3 w-20 h-20 bg-indigo-900 rounded-lg ${
-          type === "double" ? "text-xs leading-5" : ""
+        className={`flex items-center justify-center w-24 h-24 bg-indigo-900 text-white rounded-lg ${
+          type === "double" ? "text-sm leading-5" : "text-lg leading-normal"
         }`}
         role="button"
         tabIndex={0}

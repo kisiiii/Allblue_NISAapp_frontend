@@ -62,7 +62,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
   }, [labels, dataset1, dataset2]);
 
   return (
-    <div className="flex flex-col px-1 pt-1.5 pb-28 mt-4 bg-white rounded-md h-[400px]">
+    <div className="flex flex-col w-full px-1 pt-1.5 pb-28 mt-4 bg-white rounded-md h-[400px]">
       <canvas ref={chartRef} className="w-full h-full" />
     </div>
   );
