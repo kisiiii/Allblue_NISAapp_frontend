@@ -16,11 +16,14 @@ export function RankingSearchButtons({ onClick }) {
   ];
 
   return (
-    <div className="flex gap-8 mt-6 text-sm leading-5 text-center text-white">
+    <div className="flex justify-center flex-wrap gap-4 mt-6 text-sm leading-5 text-center text-white">
       {tabs.map((tab) => (
-        <div key={tab.id} className="flex flex-col flex-1">
+        <div
+          key={tab.id}
+          className="flex flex-col flex-1 min-w-[120px] max-w-[200px]"
+        >
           <button
-            className="px-4 py-3.5 bg-indigo-900 rounded-md cursor-pointer"
+            className="px-3 py-2 sm:px-4 sm:py-3.5 bg-indigo-900 rounded-md cursor-pointer text-xs sm:text-sm"
             onClick={() => onClick(tab.id)}
           >
             {tab.label}

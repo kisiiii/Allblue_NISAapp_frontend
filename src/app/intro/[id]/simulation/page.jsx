@@ -76,7 +76,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex overflow-hidden flex-col mx-auto max-w-[480px]">
+    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
       <div className="mb-5">
         <Tittle />
       </div>

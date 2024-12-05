@@ -74,7 +74,7 @@ function PrePopularProducts() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col pb-3.5 mx-auto w-full bg-gray-200 max-w-[480px]">
+    <div className="flex overflow-hidden flex-col pb-3.5 mx-auto w-full bg-gray-200 max-w-screen-lg">
       <Tittle />
       <div className="flex flex-col px-3.5 mt-6 w-full">
         <div className="self-start text-2xl font-bold leading-snug text-center text-black">

@@ -3,7 +3,7 @@ import AttributeButton from "./AttributeButton";
 
 export function AttributeSelector({ selectedAttributes, toggleAttribute }) {
   return (
-    <div className="flex justify-center items-center gap-4 mt-5 px-4 w-full text-base font-bold leading-none text-center">
+    <div className="grid grid-cols-2 gap-4 mt-5 px-4 w-full justify-items-center text-base font-bold leading-none text-center">
       <AttributeButton
         label="年代"
         isSelected={selectedAttributes["年代"]}

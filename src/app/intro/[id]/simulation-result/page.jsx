@@ -62,7 +62,7 @@ export function SimResult() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col mx-auto max-w-[480px]">
+    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
       <Tittle />
 
       <main className="flex flex-col items-center px-3.5 mt-11 w-full">

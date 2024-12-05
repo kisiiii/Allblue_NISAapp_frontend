@@ -50,9 +50,9 @@ function PopularProducts() {
   ];
 
   return (
-    <div className="flex overflow-hidden flex-col pb-10 mx-auto w-full bg-gray-200 max-w-[480px]">
+    <div className="flex overflow-hidden flex-col pb-5 mx-auto w-full bg-gray-200 max-w-screen-lg">
       <HeaderMenu />
-      <main className="flex flex-col px-3.5 mt-6 w-full">
+      <main className="flex flex-col px-6 mt-6 w-full">
         <div className="self-start text-2xl font-bold text-black">
           個人ランキング
         </div>

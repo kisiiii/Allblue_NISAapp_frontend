@@ -67,9 +67,9 @@ function DashboardLayout() {
   ];
 
   return (
-    <div className="flex overflow-hidden flex-col pb-5 mx-auto w-full bg-gray-200 max-w-[480px]">
+    <div className="flex overflow-hidden flex-col pb-5 mx-auto w-full bg-gray-200 max-w-screen-lg">
       <HeaderMenu />
-      <div className="flex flex-col items-start px-3.5 mt-7 w-full">
+      <div className="flex flex-col items-start px-6 mt-7 w-full">
         <div className="text-2xl font-bold text-black">運用資産状況</div>
         {/* ↓資産残高表示 */}
         <AssetCard balance={balance} income={income} />
@@ -95,7 +95,7 @@ function DashboardLayout() {
         {/* ↓保有商品表示 */}
         <FundCard funds={fundData} />
 
-        <div className="flex flex-wrap justify-evenly w-full items-center gap-3 mt-6 text-sm font-extrabold text-center text-white">
+        <div className="flex flex-wrap justify-evenly w-full items-center gap-2 mt-6 text-sm font-extrabold text-center text-white">
           {/* フッターメニュー */}
           {footerButtons.map((button, index) => (
             <FooterButton key={index} {...button} />

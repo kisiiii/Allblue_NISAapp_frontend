@@ -65,13 +65,13 @@ function PopularProducts() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col pb-3.5 mx-auto w-full bg-gray-200 max-w-[480px]">
+    <div className="flex overflow-hidden flex-col pb-5 mx-auto w-full bg-gray-200 max-w-screen-lg">
       <HeaderMenu />
-      <div className="flex flex-col px-3.5 mt-6 w-full">
+      <div className="flex flex-col px-6 mt-6 w-full">
         <div className="self-start text-2xl font-bold leading-snug text-center text-black">
           人気商品ランキング
         </div>
-        <div className="flex flex-col px-6 pt-7 pb-4 mt-5 w-full font-medium text-black whitespace-nowrap bg-white rounded-md">
+        <div className="flex flex-col px-6 pt-7 pb-4 mt-5 w-full font-medium text-black bg-white rounded-md">
           {/* ↓ランキング検索説明文 */}
           <SearchDescription />
           {/* ↓属性選択ボタン */}
