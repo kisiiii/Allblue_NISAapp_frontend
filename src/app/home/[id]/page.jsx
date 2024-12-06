@@ -30,6 +30,7 @@ function DashboardLayout() {
   // 資産推移データ
   const assetTransitionData = {
     labels: [
+      "2023/12",
       "2024/1",
       "2024/2",
       "2024/3",
@@ -40,14 +41,16 @@ function DashboardLayout() {
       "2024/8",
       "2024/9",
       "2024/10",
+      "2024/11",
+      "2024/12",
     ],
     dataset1: [
-      100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000,
-      1000000,
+      100000, 203000, 320000, 410000, 540000, 650000, 720000, 870000, 990000,
+      1200000, 1440000, 1630000, 1790000,
     ],
     dataset2: [
-      50000, 120000, 180000, 290000, 350000, 400000, 490000, 540000, 670000,
-      700000,
+      50000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000,
+      900000, 1000000, 1100000, 1100000,
     ],
   };
 
@@ -74,8 +77,12 @@ function DashboardLayout() {
         {/* ↓資産残高表示 */}
         <AssetCard balance={balance} income={income} />
 
+        <div className="mt-7 text-2xl font-bold text-black">資産推移</div>
+        {/* ↓資産推移グラフ */}
+        <AssetTransition {...assetTransitionData} />
+
         <div className="mt-7 text-2xl font-bold text-black">本年の投資額</div>
-        <div className="flex flex-wrap gap-3 py-5 mt-3 w-full font-bold text-center text-black whitespace-nowrap bg-white rounded-md">
+        <div className="flex flex-wrap gap-3 py-2 mt-3 w-full font-bold text-center text-black whitespace-nowrap bg-white rounded-md">
           {/* Nisa残高表示 */}
           {investmentData.map((data, index) => (
             <div
@@ -86,10 +93,6 @@ function DashboardLayout() {
             </div>
           ))}
         </div>
-
-        <div className="mt-7 text-2xl font-bold text-black">資産推移</div>
-        {/* ↓資産推移グラフ */}
-        <AssetTransition {...assetTransitionData} />
 
         <div className="mt-7 text-2xl font-bold text-black">保有ファンド</div>
         {/* ↓保有商品表示 */}
