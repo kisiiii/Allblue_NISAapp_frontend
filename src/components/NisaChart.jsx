@@ -17,12 +17,13 @@ export function NisaChart({ amount, total, colors }) {
             data: [amount, remaining],
             backgroundColor: colors, // カラー設定はInvestmentCard.jsxで設定
             hoverBackgroundColor: colors,
-            borderWidth: 1,
+            borderWidth: 0, // 枠線を非表示
+            hoverBorderWidth: 0, // ホバー時の枠線も非表示
           },
         ],
       },
       options: {
-        cutout: "70%", // 中央部分のサイズ
+        cutout: "65%", // 中央部分のサイズ
         plugins: {
           legend: {
             display: false, // ラベルの非表示
