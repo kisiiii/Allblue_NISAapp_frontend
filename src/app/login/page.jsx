@@ -106,8 +106,8 @@ const PasswordInputField = ({ icon, label, defaultValue }) => {
   const inputId = `${label.toLowerCase().replace(/\s/g, "-")}-input`;
 
   return (
-    <div className="flex items-center px-4 py-3.5 w-full font-medium bg-white border-2 border-solid border-zinc-900 rounded-2xl">
-      <div className="text-xl text-zinc-900">{icon}</div>
+    <div className="flex items-center px-4 py-3.5 w-full font-medium bg-white border-2 border-solid border-zinc-900 rounded-2xl relative">
+      <div className="text-xl text-zinc-900 shrink-0">{icon}</div>
       <label htmlFor={inputId} className="sr-only">
         {label}
       </label>
@@ -116,13 +116,13 @@ const PasswordInputField = ({ icon, label, defaultValue }) => {
         type={showPassword ? "text" : "password"}
         placeholder={label}
         defaultValue={defaultValue}
-        className="flex-grow ml-3 bg-transparent border-none outline-none"
+        className="flex-grow ml-3 pr-10 bg-transparent border-none outline-none"
         aria-label={label}
       />
       <button
         type="button"
         onClick={togglePasswordVisibility}
-        className="text-xl text-zinc-900 ml-3"
+        className="absolute right-3 text-xl text-zinc-900 w-6 h-6 flex items-center justify-center"
         aria-label={showPassword ? "Hide password" : "Show password"}
       >
         {showPassword ? <FaEyeSlash /> : <FaEye />}

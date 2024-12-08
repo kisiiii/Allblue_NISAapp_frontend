@@ -80,6 +80,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
               display: true,
               maxRotation: 0, // ラベルを水平に表示
               minRotation: 0,
+              autoSkip: false, // 自動でラベルを間引かない
             },
             title: {
               display: false, // 横軸のタイトル非表示
@@ -123,7 +124,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
   }, [labels, dataset1, dataset2]);
 
   return (
-    <div className="flex flex-col w-full px-2 pt-1.5 pb-1.5 mt-4 bg-white rounded-md h-[300px]">
+    <div className="flex flex-col w-full px-2 pt-1.5 pb-1.5 mt-4 bg-white rounded-md h-[250px]">
       <canvas ref={chartRef} className="w-full h-full p-0 border-0" />
     </div>
   );

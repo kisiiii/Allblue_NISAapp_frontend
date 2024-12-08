@@ -18,14 +18,19 @@ export function SimResult() {
       content: (
         <>
           <div className="flex gap-8 self-start mt-7">
-            <div className="self-start text-xs font-medium text-black">
-              イメージ
+            <div className="self-start ml-2.5 text-xs font-medium text-black">
+              ※イメージ
             </div>
-            <div className="text-2xl font-bold text-center text-blue-800 basis-auto">
+            <div className="self-start text-2xl mt-4 font-bold text-center text-blue-800 basis-auto">
               225位／1423人中
             </div>
           </div>
-          <div className="flex shrink-0 self-end mt-3.5 max-w-full bg-zinc-300 h-[198px] w-[287px]" />
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd783bd62ecad6155a253eb4d1015a51a76a0a543f5474328272e0aeaf7829c8?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
+            alt=""
+            className="self-center object-contain mt-4 w-full aspect-[1.07] max-w-[314px]"
+          />
         </>
       ),
     },
@@ -39,19 +44,28 @@ export function SimResult() {
         "自分と似たユーザーの\n人気ランキングが見れて\n安心して商品を選びやすい！",
       content: (
         <>
-          <div className="self-start mt-12 ml-2.5 text-xs font-medium text-black">
-            イメージ
+          <div className="self-start mt-6 ml-2.5 text-xs font-medium text-black">
+            ※イメージ
           </div>
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd783bd62ecad6155a253eb4d1015a51a76a0a543f5474328272e0aeaf7829c8?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
             alt=""
-            className="object-contain mt-4 w-full aspect-[1.07] max-w-[314px]"
+            className="self-center object-contain mt-4 w-full aspect-[1.07] max-w-[314px]"
           />
         </>
       ),
     },
   ];
+
+  const convertNewlinesToBreaks = (text) => {
+    return text.split("\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
 
   const router = useRouter();
   const params = useParams();
@@ -65,7 +79,7 @@ export function SimResult() {
     <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
       <Tittle />
 
-      <main className="flex flex-col items-center px-3.5 mt-11 w-full">
+      <main className="flex flex-col items-center px-3.5 mt-8 w-full">
         <div className="px-5 py-3 text-base text-center font-bold text-blue-800 bg-blue-100 rounded-xl w-full">
           あなたの月々の余剰資金は・・・
         </div>
@@ -73,15 +87,15 @@ export function SimResult() {
           30,000円
         </div>
 
-        <div className="flex flex-col pt-4 pb-7 mt-1.5 bg-indigo-100 rounded-lg">
+        <div className="flex flex-col px-5 pt-4 pb-7 mt-1.5 bg-indigo-100 rounded-lg">
           <div className="text-base text-center font-bold text-zinc-800">
             10年前に毎月30,000円を
             <br />
             積み立てていた場合の利益
           </div>
-          <div className="flex flex-col self-center px-16 pt-1.5 pb-3.5 mt-5 w-full font-bold leading-none text-center text-white bg-indigo-900 rounded-xl max-w-[323px]">
-            <div className="self-center text-4xl">189万円*</div>
-            <div className="self-start mt-1.5 text-2xl">増えていました！</div>
+          <div className="flex flex-col self-center px-16 pt-1.5 pb-3.5 mt-2 w-full font-bold leading-none text-center text-white bg-indigo-900 rounded-xl max-w-[323px]">
+            <div className="text-center mt-1.5 text-4xl">189万円*</div>
+            <div className="text-center mt-1.5 text-xl">増えていました！</div>
           </div>
           <img
             loading="lazy"
@@ -99,7 +113,7 @@ export function SimResult() {
           </div>
         </div>
 
-        <div className="self-center mt-9 text-2xl font-bold text-black">
+        <div className="self-center mt-9 mb-3 text-2xl font-bold text-black">
           NISAPOではじめるメリット
         </div>
 
@@ -107,9 +121,9 @@ export function SimResult() {
           <Merit
             key={index}
             number={merit.number}
-            title={merit.title}
+            title={convertNewlinesToBreaks(merit.title)}
             image={merit.image}
-            description={merit.description}
+            description={convertNewlinesToBreaks(merit.description)}
           >
             {merit.content}
           </Merit>
@@ -121,14 +135,19 @@ export function SimResult() {
 
         <button
           onClick={() => handleButtonClick(`/intro/${id}/pre-ranking`)}
-          className="px-6 py-6 w-[90%] text-2xl self-center font-bold text-white bg-indigo-900 rounded-xl"
+          className="px-4 py-6 w-[90%] text-xl self-center font-bold text-white bg-indigo-900 rounded-xl"
         >
           人気ランキングを見てみる
         </button>
 
         <button
-          onClick={() => handleButtonClick(`/home/${id}`)}
-          className="px-6 py-6 w-[90%] my-10 text-2xl self-center font-bold text-white bg-red-600 rounded-xl"
+          onClick={() =>
+            window.open(
+              "https://www.mizuhobank.co.jp/nisa/addaccount/index.html",
+              "_blank"
+            )
+          }
+          className="px-6 py-6 w-[90%] my-10 text-xl self-center font-bold text-white bg-red-600 rounded-xl"
         >
           NISAをはじめる
         </button>
