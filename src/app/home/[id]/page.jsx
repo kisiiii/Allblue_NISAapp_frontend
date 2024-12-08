@@ -56,17 +56,45 @@ function DashboardLayout() {
 
   //保有ファンドデータ
   const fundData = [
-    { name: "eMAXIS Slim 米国株式（S&P500）", amount: "10,000" },
-    { name: "eMAXIS Slim 米国株式（S&P500）", amount: "10,000" },
-    { name: "eMAXIS Slim 米国株式（S&P500）", amount: "10,000" },
+    {
+      name: "eMAXIS Slim 米国株式（S&P500）",
+      amount: "10,000",
+      profitLoss: "1,000",
+    },
+    {
+      name: "eMAXIS Slim 米国株式（S&P500）",
+      amount: "10,000",
+      profitLoss: "1,000",
+    },
+    {
+      name: "eMAXIS Slim 米国株式（S&P500）",
+      amount: "10,000",
+      profitLoss: "1,000",
+    },
   ];
 
   //フッターメニュー表示用（バックエンドデータではない）
   const footerButtons = [
-    { text: "口座確認", type: "single" },
-    { text: "商品検索", type: "single" },
-    { text: "個人\nランキング", type: "double" },
-    { text: "人気\nランキング", type: "double" },
+    {
+      text: "口座確認",
+      type: "single",
+      url: "https://www.mizuhobank.co.jp/internet_service/jikangai.html",
+    },
+    {
+      text: "商品検索",
+      type: "single",
+      url: "https://fund.www.mizuhobank.co.jp/webasp/mizuho-bk/fund/pc/search/fundlist.aspx?it=10",
+    },
+    {
+      text: "個人\nランキング",
+      type: "double",
+      url: "/home/1111/personal-ranking",
+    },
+    {
+      text: "人気\nランキング",
+      type: "double",
+      url: "/home/1111/product-ranking",
+    },
   ];
 
   return (

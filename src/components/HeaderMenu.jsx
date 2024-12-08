@@ -75,18 +75,22 @@ export function HeaderMenu() {
               >
                 ホーム
               </Link>
-              <Link
-                href="/account"
+              <a
+                href="https://www.mizuhobank.co.jp/internet_service/jikangai.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"
               >
                 口座確認
-              </Link>
-              <Link
-                href="/search"
+              </a>
+              <a
+                href="https://fund.www.mizuhobank.co.jp/webasp/mizuho-bk/fund/pc/search/fundlist.aspx?it=10"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"
               >
                 商品検索
-              </Link>
+              </a>
               <Link
                 href="/home/1111/personal-ranking"
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"

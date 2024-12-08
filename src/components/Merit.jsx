@@ -3,7 +3,7 @@ import * as React from "react";
 export function Merit({ number, title, description, image, note, children }) {
   return (
     <div className="flex flex-col px-3 py-5 w-full bg-indigo-100 rounded-lg mb-6">
-      <div className="self-center px-5 pt-1.5 pb-3 max-w-full text-xl font-bold text-blue-800 bg-red-200 rounded-3xl w-[155px]">
+      <div className="self-center text-center px-5 py-1.5 max-w-full text-xl font-bold text-blue-800 bg-red-200 rounded-3xl w-[155px]">
         メリット{number}
       </div>
       <div className="self-center mt-2.5 text-base font-bold text-center text-blue-800">
