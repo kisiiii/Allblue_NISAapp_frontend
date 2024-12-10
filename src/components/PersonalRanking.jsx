@@ -12,7 +12,7 @@ export function PersonalRanking({ myRanking, parameter }) {
       </div>
       <img
         loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc7d3c1f3fa94a26425f20cb63f7628b602a1a766ae240abbaa008fbfe5d4cad?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
+        src="/personal_lank2.png"
         alt="Ranking visualization"
         className="object-contain mt-12 mx-auto w-full max-w-[271px] aspect-[1.2]"
       />
