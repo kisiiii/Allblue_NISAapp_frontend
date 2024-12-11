@@ -1,17 +1,51 @@
 "use client";
 
 import * as React from "react";
+import { usePathname } from 'next/navigation';
 import { HeaderMenu } from "../../../components/HeaderMenu";
 import { AssetCard } from "../../../components/AssetCard";
 import { InvestmentCard } from "../../../components/InvestmentCard";
 import { AssetTransition } from "../../../components/AssetTransition";
 import { FundCard } from "../../../components/FundCard";
 import { FooterButton } from "../../../components/FooterButton";
+import { fetchBalance, fetchIncome } from '../../../api';
+
+const BASE_URL = 'https://tech0-gen-7-step4-student-finalapp-14-c7end0axgtceeabg.japanwest-01.azurewebsites.net';
 
 function DashboardLayout() {
-  //運用資産状況データ
-  const balance = 1500000;
-  const income = 500000;
+  //資産運用状況
+  const pathname = usePathname();
+  const userId = pathname.split('/').pop();
+
+  const [balance, setBalance] = React.useState(null);
+  const [income, setIncome] = React.useState(null);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    if (userId) {
+      const getData = async () => {
+        try {
+          const balanceData = await fetchBalance(userId);
+          setBalance(balanceData);
+
+          const incomeData = await fetchIncome(userId);
+          setIncome(incomeData);
+        } catch (error) {
+          setError(error.message);
+        }
+      };
+
+      getData();
+    }
+  }, [userId]);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (balance === null || income === null) {
+    return <div>Loading...</div>;
+  }
 
   //本年のNisa投資額データ
   const investmentData = [
