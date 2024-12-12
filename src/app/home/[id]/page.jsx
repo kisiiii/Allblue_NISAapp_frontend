@@ -10,7 +10,7 @@ import { FooterButton } from "../../../components/FooterButton";
 
 function DashboardLayout() {
   //運用資産状況データ
-  const balance = 1500000;
+  const balance = 1600000;
   const income = 500000;
 
   //本年のNisa投資額データ
