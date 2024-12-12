@@ -1,53 +1,99 @@
 "use client";
 
 import * as React from "react";
+import { useParams } from "next/navigation";
 import { HeaderMenu } from "../../../../components/HeaderMenu";
 import { PersonalRanking } from "../../../../components/PersonalRanking";
 import { LinkButton } from "../../../../components/LinkButton";
 import { TabSelector } from "../../../../components/TabSelector";
 import { TabContent } from "../../../../components/TabContent";
+import { fetchPersonalRanking, fetchRankingData } from "../../../../api";
 
 function PopularProducts() {
+  const { id } = useParams();
+
   //最初のタブは「つみたて投資枠」に設定
   const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
 
   //個人ランキングデータ
-  const myRanking = 123456;
-  const parameter = 9999999;
+  //const myRanking = 123456;
+  //const parameter = 9999999;
+  const [myRanking, setMyRanking] = React.useState(0);
+  const [parameter, setParameter] = React.useState(0);
+
+  React.useEffect(() => {
+    if (id) {
+      const fetchData = async () => {
+        try {
+          console.log('Fetching data for user ID:', id); // ここでIDを確認
+          const data = await fetchPersonalRanking(id);
+          console.log('Fetched Data:', data); // ここでデータを確認
+          setMyRanking(data.myRanking);
+          setParameter(data.parameter);
+        } catch (error) {
+          console.error("Error fetching personal ranking:", error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [id]);
 
   //運用益上位10%ランキングデータ
-  const rankingData = [
-    {
-      rank: 1,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 2,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 3,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 4,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 5,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-  ];
+  const [rankingData, setRankingData] = React.useState([]);
+
+  React.useEffect(() => {
+    if (id) {
+      const fetchData = async () => {
+        try {
+          const personalRankingData = await fetchPersonalRanking(id);
+          console.log('Fetched Personal Ranking Data:', personalRankingData);
+          setMyRanking(personalRankingData.myRanking);
+          setParameter(personalRankingData.parameter);
+
+          const rankingData = await fetchRankingData(id);
+          console.log('Fetched Ranking Data:', rankingData); // ここでデータを確認
+          setRankingData(rankingData);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [id]);
+  // const rankingData = [
+  //   {
+  //     rank: 1,
+  //     fundName: "eMAXIS Slim 米国株式（S&P500）",
+  //     price: "33,175",
+  //     priceChange: "+131",
+  //   },
+  //   {
+  //     rank: 2,
+  //     fundName: "eMAXIS Slim 米国株式（S&P500）",
+  //     price: "33,175",
+  //     priceChange: "+131",
+  //   },
+  //   {
+  //     rank: 3,
+  //     fundName: "eMAXIS Slim 米国株式（S&P500）",
+  //     price: "33,175",
+  //     priceChange: "+131",
+  //   },
+  //   {
+  //     rank: 4,
+  //     fundName: "eMAXIS Slim 米国株式（S&P500）",
+  //     price: "33,175",
+  //     priceChange: "+131",
+  //   },
+  //   {
+  //     rank: 5,
+  //     fundName: "eMAXIS Slim 米国株式（S&P500）",
+  //     price: "33,175",
+  //     priceChange: "+131",
+  //   },
+  // ];
 
   return (
     <div className="flex overflow-hidden flex-col pb-5 mx-auto w-full bg-gray-200 max-w-screen-lg">
