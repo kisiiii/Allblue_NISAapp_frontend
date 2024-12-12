@@ -86,11 +86,6 @@ function PopularProducts() {
         <div className="flex flex-col pb-6 mt-5 w-full leading-none bg-white rounded-md">
           {/* ↓タブデザイン */}
           <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />{" "}
-          {/* ↓属性選択ボタン */}
-          <AttributeSelector
-            selectedAttributes={selectedAttributes}
-            toggleAttribute={toggleAttribute}
-          />{" "}
           {/* ↓タブの切り替え設定＋ランキングデザイン */}
           <TabContent activeTab={activeTab} rankingData={rankingData} />
         </div>
