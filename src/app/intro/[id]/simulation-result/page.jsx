@@ -27,7 +27,7 @@ export function SimResult() {
           </div>
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd783bd62ecad6155a253eb4d1015a51a76a0a543f5474328272e0aeaf7829c8?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
+            src="/personal_lank2.png"
             alt=""
             className="self-center object-contain mt-4 w-full aspect-[1.07] max-w-[314px]"
           />
@@ -49,7 +49,7 @@ export function SimResult() {
           </div>
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd783bd62ecad6155a253eb4d1015a51a76a0a543f5474328272e0aeaf7829c8?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
+            src="/product_ranking.png"
             alt=""
             className="self-center object-contain mt-4 w-full aspect-[1.07] max-w-[314px]"
           />
@@ -83,7 +83,7 @@ export function SimResult() {
         <div className="px-5 py-3 text-base text-center font-bold text-blue-800 bg-blue-100 rounded-xl w-full">
           あなたの月々の余剰資金は・・・
         </div>
-        <div className="px-5 py-6 mt-3 mb-10 text-4xl font-bold leading-none text-center text-white bg-indigo-900 rounded-xl w-full">
+        <div className="px-5 py-6 mt-3 mb-10 text-4xl font-bold leading-none text-center text-indigo-900 bg-[#F9F8EB] rounded-xl w-full">
           30,000円
         </div>
 
@@ -93,7 +93,7 @@ export function SimResult() {
             <br />
             積み立てていた場合の利益
           </div>
-          <div className="flex flex-col self-center px-16 pt-1.5 pb-3.5 mt-2 w-full font-bold leading-none text-center text-white bg-indigo-900 rounded-xl max-w-[323px]">
+          <div className="flex flex-col self-center px-16 pt-1.5 pb-3.5 mt-2 w-full font-bold leading-none text-center text-white bg-[#4B75CC] rounded-xl max-w-[323px]">
             <div className="text-center mt-1.5 text-4xl">189万円*</div>
             <div className="text-center mt-1.5 text-xl">増えていました！</div>
           </div>
