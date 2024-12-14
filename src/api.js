@@ -51,3 +51,28 @@ export const fetchRankingData = async (userId) => {
       throw error;
     }
   };
+
+  export const fetchProductRanking = async (userId, investmentFlag, selectedAttributes) => {
+    const params = new URLSearchParams();
+  
+    if (selectedAttributes.年代) {
+      params.append("age_group", true);
+    }
+    if (selectedAttributes.年収) {
+      params.append("annual_income", true);
+    }
+    if (selectedAttributes.家族構成) {
+      params.append("family_structure_type", true);
+    }
+    if (selectedAttributes.投資額) {
+      params.append("investment_amount", true);
+    }
+  
+    try {
+      const response = await axios.get(`${BASE_URL}/product-ranking/${encodeURIComponent(userId)}?investment_flag=${investmentFlag}&${params.toString()}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching product ranking:", error);
+      throw error;
+    }
+  };
