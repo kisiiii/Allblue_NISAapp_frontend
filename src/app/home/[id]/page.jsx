@@ -8,7 +8,7 @@ import { InvestmentCard } from "../../../components/InvestmentCard";
 import { AssetTransition } from "../../../components/AssetTransition";
 import { FundCard } from "../../../components/FundCard";
 import { FooterButton } from "../../../components/FooterButton";
-import { fetchBalance, fetchIncome } from '../../../api';
+import { fetchBalance, fetchIncome,fetchInvestmentData, fetchAssetTransitionData, fetchFundData } from '../../../api';
 
 const BASE_URL = 'https://tech0-gen-7-step4-student-finalapp-14-c7end0axgtceeabg.japanwest-01.azurewebsites.net';
 
@@ -19,6 +19,9 @@ function DashboardLayout() {
 
   const [balance, setBalance] = React.useState(null);
   const [income, setIncome] = React.useState(null);
+  const [investmentData, setInvestmentData] = React.useState(null);
+  const [assetTransitionData, setAssetTransitionData] = React.useState(null);
+  const [fundData, setFundData] = React.useState(null);
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
@@ -26,12 +29,43 @@ function DashboardLayout() {
       const getData = async () => {
         try {
           const balanceData = await fetchBalance(userId);
-          setBalance(balanceData);
-
-          const incomeData = await fetchIncome(userId);
-          setIncome(incomeData);
+          setBalance(balanceData !== null ? balanceData : 0);
         } catch (error) {
-          setError(error.message);
+          setBalance(0);
+          console.error('Error fetching balance:', error);
+        }
+
+        try {
+          const incomeData = await fetchIncome(userId);
+          setIncome(incomeData !== null ? incomeData : 0);
+        } catch (error) {
+          setIncome(0);
+          console.error('Error fetching income:', error);
+        }
+
+        try {
+          const year = new Date().getFullYear();
+          const investment = await fetchInvestmentData(year);
+          setInvestmentData(investment !== null ? investment : []);
+        } catch (error) {
+          setInvestmentData([]);
+          console.error('Error fetching investment data:', error);
+        }
+
+        try {
+          const assetTransition = await fetchAssetTransitionData();
+          setAssetTransitionData(assetTransition !== null ? assetTransition : { labels: [], dataset1: [], dataset2: [] });
+        } catch (error) {
+          setAssetTransitionData({ labels: [], dataset1: [], dataset2: [] });
+          console.error('Error fetching asset transition data:', error);
+        }
+
+        try {
+          const fund = await fetchFundData();
+          setFundData(fund !== null ? fund : []);
+        } catch (error) {
+          setFundData([]);
+          console.error('Error fetching fund data:', error);
         }
       };
 
@@ -43,7 +77,7 @@ function DashboardLayout() {
     return <div>Error: {error}</div>;
   }
 
-  if (balance === null || income === null) {
+  if (balance === null && income === null && investmentData === null && assetTransitionData === null && fundData === null) {
     return <div>Loading...</div>;
   }
 
@@ -52,64 +86,64 @@ function DashboardLayout() {
   //const income = 500000;
 
   //本年のNisa投資額データ
-  const investmentData = [
-    {
-      type: "つみたて投資枠",
-      amount: "100,000",
-      total: "1,200,000",
-    },
-    {
-      type: "成長投資枠",
-      amount: "100,000",
-      total: "2,400,000",
-    },
-  ];
+  // const investmentData = [
+  //   {
+  //     type: "つみたて投資枠",
+  //     amount: "100,000",
+  //     total: "1,200,000",
+  //   },
+  //   {
+  //     type: "成長投資枠",
+  //     amount: "100,000",
+  //     total: "2,400,000",
+  //   },
+  // ];
 
-  // 資産推移データ
-  const assetTransitionData = {
-    labels: [
-      "2023/12",
-      "2024/1",
-      "2024/2",
-      "2024/3",
-      "2024/4",
-      "2024/5",
-      "2024/6",
-      "2024/7",
-      "2024/8",
-      "2024/9",
-      "2024/10",
-      "2024/11",
-      "2024/12",
-    ],
-    dataset1: [
-      100000, 203000, 320000, 410000, 540000, 650000, 720000, 870000, 990000,
-      1200000, 1440000, 1630000, 1790000,
-    ],
-    dataset2: [
-      50000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000,
-      900000, 1000000, 1100000, 1100000,
-    ],
-  };
+  // // 資産推移データ
+  // const assetTransitionData = {
+  //   labels: [
+  //     "2023/12",
+  //     "2024/1",
+  //     "2024/2",
+  //     "2024/3",
+  //     "2024/4",
+  //     "2024/5",
+  //     "2024/6",
+  //     "2024/7",
+  //     "2024/8",
+  //     "2024/9",
+  //     "2024/10",
+  //     "2024/11",
+  //     "2024/12",
+  //   ],
+  //   dataset1: [
+  //     100000, 203000, 320000, 410000, 540000, 650000, 720000, 870000, 990000,
+  //     1200000, 1440000, 1630000, 1790000,
+  //   ],
+  //   dataset2: [
+  //     50000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000,
+  //     900000, 1000000, 1100000, 1100000,
+  //   ],
+  // };
 
-  //保有ファンドデータ
-  const fundData = [
-    {
-      name: "eMAXIS Slim 米国株式（S&P500）",
-      amount: "10,000",
-      profitLoss: "1,000",
-    },
-    {
-      name: "eMAXIS Slim 米国株式（S&P500）",
-      amount: "10,000",
-      profitLoss: "1,000",
-    },
-    {
-      name: "eMAXIS Slim 米国株式（S&P500）",
-      amount: "10,000",
-      profitLoss: "1,000",
-    },
-  ];
+  // //保有ファンドデータ
+  // const fundData = [
+  //   {
+  //     name: "eMAXIS Slim 米国株式（S&P500）",
+  //     amount: "10,000",
+  //     profitLoss: "1,000",
+  //   },
+  //   {
+  //     name: "eMAXIS Slim 米国株式（S&P500）",
+  //     amount: "10,000",
+  //     profitLoss: "1,000",
+  //   },
+  //   {
+  //     name: "eMAXIS Slim 米国株式（S&P500）",
+  //     amount: "10,000",
+  //     profitLoss: "1,000",
+  //   },
+  // ];
 
   //フッターメニュー表示用（バックエンドデータではない）
   const footerButtons = [
@@ -150,7 +184,7 @@ function DashboardLayout() {
         <div className="mt-7 text-2xl font-bold text-black">本年の投資額</div>
         <div className="flex flex-wrap gap-3 py-2 mt-3 w-full font-bold text-center text-black whitespace-nowrap bg-white rounded-md">
           {/* Nisa残高表示 */}
-          {investmentData.map((data, index) => (
+          {(investmentData || []).map((data, index) => (
             <div
               key={index}
               className="flex-1 min-w-[150px] md:min-w-[200px] flex justify-center"

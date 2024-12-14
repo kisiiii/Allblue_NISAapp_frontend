@@ -2,8 +2,9 @@ import React from "react";
 import { NisaChart } from "./NisaChart";
 
 export function InvestmentCard({ type, amount, total }) {
-  const numericAmount = parseInt(amount.replace(/,/g, ""), 10);
-  const numericTotal = parseInt(total.replace(/,/g, ""), 10);
+  // amountとtotalが数値の場合にそのまま使用
+  const numericAmount = typeof amount === "string" ? parseInt(amount.replace(/,/g, ""), 10) : amount;
+  const numericTotal = typeof total === "string" ? parseInt(total.replace(/,/g, ""), 10) : total;
 
   // 色を直接設定
   const colors =
@@ -22,8 +23,8 @@ export function InvestmentCard({ type, amount, total }) {
           colors={colors}
         />
       </div>
-      <div className="mt-2 text-base font-bold text-indigo-900">{amount}円</div>
-      <div className="mt-1 text-sm text-zinc-800">上限: {total}円</div>
+      <div className="mt-2 text-base font-bold text-indigo-900">{numericAmount.toLocaleString()}円</div>
+      <div className="mt-1 text-sm text-zinc-800">上限: {numericTotal.toLocaleString()}円</div>
     </div>
   );
 }

@@ -21,6 +21,36 @@ export const fetchIncome = async (userId) => {
   }
 };
 
+export const fetchInvestmentData = async (year) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/investment-data?year=${year}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching investment data:', error);
+      throw error;
+    }
+  };
+  
+  export const fetchAssetTransitionData = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/asset-transition-data`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching asset transition data:', error);
+      throw error;
+    }
+  };
+  
+  export const fetchFundData = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/fund-data`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching fund data:', error);
+      throw error;
+    }
+  };
+
 export const fetchPersonalRanking = async (userId) => {
   try {
     const response = await axios.get(`${BASE_URL}/personal-ranking/${userId}`);

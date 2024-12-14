@@ -7,8 +7,13 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
 
+    // labels, dataset1, dataset2がundefinedの場合に空の配列を使用
+    const safeLabels = labels || [];
+    const safeDataset1 = dataset1 || [];
+    const safeDataset2 = dataset2 || [];
+
     // データセットの最大値を取得
-    const rawMaxValue = Math.max(...dataset1, ...dataset2);
+    const rawMaxValue = Math.max(...safeDataset1, ...safeDataset2);
 
     // Y軸の最大値を計算する関数
     const calculateYAxisMax = (value) => {
@@ -28,7 +33,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
     const stepSize = yAxisMaxValue / 4;
 
     // 月だけを抽出するための処理
-    const shortLabels = labels.slice(-12).map((label) => {
+    const shortLabels = safeLabels.slice(-12).map((label) => {
       const [year, month] = label.split("/"); // 年と月を分割
       return `${month}月`; // 月のみを返す
     });
@@ -47,7 +52,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
         datasets: [
           {
             label: "評価額",
-            data: dataset1.map((value) => value / 10000), // 万単位に変換
+            data: safeDataset1.map((value) => value / 10000), // 万単位に変換
             borderColor: "#36A2EB",
             backgroundColor: "rgba(54, 162, 235, 0.5)",
             fill: true,
@@ -56,7 +61,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
           },
           {
             label: "取得価額",
-            data: dataset2.map((value) => value / 10000), // 万単位に変換
+            data: safeDataset2.map((value) => value / 10000), // 万単位に変換
             borderColor: "#FF6384",
             backgroundColor: "rgba(255, 99, 132, 0.5)",
             fill: true,
