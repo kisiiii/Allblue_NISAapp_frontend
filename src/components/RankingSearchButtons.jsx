@@ -4,7 +4,7 @@ export function RankingSearchButtons({ onClick }) {
   // ボタンデータをコンポーネント内部で定義
   const tabs = [
     {
-      id: "つみたて投資枠",
+      id: "投資",
       label: "ランキングを見る",
     },
   ];
