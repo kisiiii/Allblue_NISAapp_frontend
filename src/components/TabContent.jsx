@@ -9,9 +9,9 @@ export function TabContent({ activeTab, rankingData }) {
           <div className="text-lg font-bold text-indigo-900">
             つみたて投資枠ランキング
           </div>
-          <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
+{/*           <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
             積立額
-          </div>
+          </div> */}
           <div className="flex flex-col gap-5 mt-5">
             {rankingData.map((item, index) => (
               <RankingCard key={index} {...item} />
@@ -24,9 +24,9 @@ export function TabContent({ activeTab, rankingData }) {
           <div className="text-lg font-bold text-indigo-900">
             成長投資枠ランキング
           </div>
-          <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
+{/*           <div className="self-end px-5 py-1.5 text-xs font-medium text-center text-white whitespace-nowrap bg-indigo-900">
             積立額
-          </div>
+          </div> */}
           <div className="flex flex-col gap-5 mt-5">
             {rankingData.map((item, index) => (
               <RankingCard key={index} {...item} />

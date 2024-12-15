@@ -2,16 +2,16 @@ import * as React from "react";
 
 export function RankingCard({ rank, fundName, price, priceChange }) {
   return (
-    <div className="flex w-full gap-2 items-stretch">
+    <div className="flex w-full gap-1.5 items-stretch">
       {/* ランク部分 */}
-      <div className="flex items-center justify-center px-3 py-5 bg-indigo-900 text-xs font-medium text-white text-center rounded min-w-[40px]">
+      <div className="flex items-center justify-center px-3 py-5 bg-indigo-900 text-xs font-medium text-white text-center rounded">
         {rank}
       </div>
       {/* 詳細部分 */}
       <div className="flex-1 flex flex-col gap-1">
         <div className="flex gap-1 items-center">
           {/* ファンド名 */}
-          <div className="flex-1 px-4 py-5 font-medium text-center bg-white rounded border-2 border-solid border-zinc-300 min-h-[50px] text-zinc-800">
+          <div className="flex-1 px-4 py-5 font-medium text-center text-xs bg-white rounded border-2 border-solid border-zinc-300 min-h-[50px] text-zinc-800">
             {fundName}
           </div>
           {/* 金額入力 */}
@@ -50,7 +50,7 @@ export function RankingCard({ rank, fundName, price, priceChange }) {
           />
           {/* 積立ボタン */}
           <button
-            className="px-6 py-3 bg-red-600 text-white text-xs font-bold rounded-3xl w-[120px]"
+            className="px-6 py-3 bg-red-600 text-white text-xs font-bold rounded-3xl min-w-[80px] md:w-[140px]"
             aria-label="積立ボタン"
           >
             積立
