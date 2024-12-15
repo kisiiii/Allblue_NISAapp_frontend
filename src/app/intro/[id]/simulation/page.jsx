@@ -92,10 +92,13 @@ export default function Home() {
             <option value="" disabled>
               年
             </option>
-            <option value="1988">1988</option>
-            <option value="1989">1989</option>
-            <option value="1990">1990</option>
-            <option value="1991">1991</option>
+            {Array.from({ length: 2024 - 1940 + 1 }, (_, i) => 1940 + i).map(
+              (y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              )
+            )}
           </select>
           <select
             className="w-full select select-bordered"

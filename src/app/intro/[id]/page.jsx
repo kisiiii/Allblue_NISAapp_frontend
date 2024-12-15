@@ -13,7 +13,7 @@ export function IntroPage() {
     <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
       <Tittle />
       <div className="flex flex-col items-center justify-center mt-20">
-        <div className="px-2 py-6 w-full font-bold text-xl text-blue-800 bg-blue-100 rounded-xl max-w-[327px] text-center">
+        <div className="px-2 py-6 w-full font-bold text-xl text-blue-800  max-w-[327px] text-center">
           あなたはご自身の
           <br />
           余剰資金（NISA投資にする資金）
@@ -24,7 +24,7 @@ export function IntroPage() {
           {/* わからないリンク */}
           <Link
             href={`/intro/${id}/simulation`}
-            className="flex-1 px-4 py-4 mt-3 w-full bg-white rounded border-2 border-solid border-zinc-300 min-h-[48px] text-zinc-800 text-center"
+            className="flex-1 px-2 py-4 mt-3 w-full bg-indigo-200 hover:bg-indigo-300 rounded min-h-[48px] text-zinc-800 text-center"
           >
             わからない
           </Link>
@@ -32,7 +32,7 @@ export function IntroPage() {
           {/* 知っているリンク */}
           <Link
             href={`/home/${id}`}
-            className="flex-1 px-4 py-4 mt-6 w-full bg-white rounded border-2 border-solid border-zinc-300 min-h-[48px] text-zinc-800 text-center"
+            className="flex-1 px-2 py-4 mt-12 w-full bg-red-200 hover:bg-red-300 rounded min-h-[48px] text-zinc-800 text-center"
           >
             知っている
           </Link>

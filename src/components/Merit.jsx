@@ -10,14 +10,14 @@ export function Merit({ number, title, description, image, note, children }) {
         {title}
       </div>
       {children}
-      <div className="flex gap-5 justify-between items-center px-2.5 mt-7 text-base font-bold bg-red-200 rounded-lg text-zinc-800">
+      <div className="flex gap-5 justify-between items-center px-2 py-2.5 mt-7 text-base font-bold bg-red-200 rounded-lg text-zinc-800">
         <img
           loading="lazy"
           src={image}
           alt=""
           className="object-contain shrink-0 self-stretch my-auto aspect-[0.92] w-[99px]"
         />
-        <div className="my-auto">{description}</div>
+        <div className="my-auto w-full">{description}</div>
       </div>
     </div>
   );

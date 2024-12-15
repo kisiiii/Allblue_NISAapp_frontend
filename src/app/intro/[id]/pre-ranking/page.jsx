@@ -22,9 +22,9 @@ function PrePopularProducts() {
 
   //ページ移動時は属性選択ボタンは選択された状態
   const [selectedAttributes, setSelectedAttributes] = React.useState({
-    年代: true,
-    年収: true,
-    家族構成: true,
+    年代: false,
+    年収: false,
+    家族構成: false,
     投資額: true,
   });
 
@@ -101,7 +101,7 @@ function PrePopularProducts() {
 
         <button
           onClick={() => handleButtonClick(`/home/${id}`)}
-          className="px-6 py-6 w-[90%] my-10 text-2xl self-center font-bold text-white bg-red-600 rounded-xl"
+          className="px-6 py-6 w-[90%] my-10 text-2xl self-center font-bold text-white bg-red-600 hover:bg-red-700 rounded-xl"
         >
           NISAをはじめる
         </button>

@@ -14,7 +14,7 @@ export function SimResult() {
       image:
         "https://cdn.builder.io/api/v1/image/assets/TEMP/905cbdeb30a7099585145f52e03dd90e15d7b0a1f76205517744ebe01a8ca59a?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd",
       description:
-        "始めた時期が同じだから\n参考になる！\n継続のモチベーションに！",
+        "始めた時期が同じだから参考になる！\n継続のモチベーションに！",
       content: (
         <>
           <div className="flex gap-8 self-start mt-7">
@@ -41,7 +41,7 @@ export function SimResult() {
       image:
         "https://cdn.builder.io/api/v1/image/assets/TEMP/8938995d32ead4259575942cbd2b4e8efdeec05cf1771644afc1b650f636d06c?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd",
       description:
-        "自分と似たユーザーの\n人気ランキングが見れて\n安心して商品を選びやすい！",
+        "自分と似たユーザーの人気ランキングが見れて安心して商品を選びやすい！",
       content: (
         <>
           <div className="self-start mt-6 ml-2.5 text-xs font-medium text-black">
@@ -87,7 +87,7 @@ export function SimResult() {
           30,000円
         </div>
 
-        <div className="flex flex-col px-5 pt-4 pb-7 mt-1.5 bg-indigo-100 rounded-lg">
+        <div className="flex flex-col px-5 pt-4 pb-7 mt-1.5 bg-indigo-100 rounded-lg w-full">
           <div className="text-base text-center font-bold text-zinc-800">
             10年前に毎月30,000円を
             <br />
@@ -108,7 +108,7 @@ export function SimResult() {
               *想定利回り10％
             </div>
             <div className="self-center mt-4 text-xl font-black leading-none text-indigo-900">
-              今すぐNISAを始めましょう
+              今すぐNISAを始めましょう！！
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export function SimResult() {
 
         <button
           onClick={() => handleButtonClick(`/intro/${id}/pre-ranking`)}
-          className="px-4 py-6 w-[90%] text-xl self-center font-bold text-white bg-indigo-900 rounded-xl"
+          className="px-4 py-6 w-[90%] text-xl self-center font-bold text-white bg-indigo-800 hover:bg-indigo-900 rounded-xl"
         >
           人気ランキングを見てみる
         </button>
@@ -147,7 +147,7 @@ export function SimResult() {
               "_blank"
             )
           }
-          className="px-6 py-6 w-[90%] my-10 text-xl self-center font-bold text-white bg-red-600 rounded-xl"
+          className="px-6 py-6 w-[90%] my-10 text-xl self-center font-bold text-white bg-red-600 hover:bg-red-700 rounded-xl"
         >
           NISAをはじめる
         </button>
