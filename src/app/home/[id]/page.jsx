@@ -1,21 +1,28 @@
 "use client";
 
 import * as React from "react";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 import { HeaderMenu } from "../../../components/HeaderMenu";
 import { AssetCard } from "../../../components/AssetCard";
 import { InvestmentCard } from "../../../components/InvestmentCard";
 import { AssetTransition } from "../../../components/AssetTransition";
 import { FundCard } from "../../../components/FundCard";
 import { FooterButton } from "../../../components/FooterButton";
-import { fetchBalance, fetchIncome,fetchInvestmentData, fetchAssetTransitionData, fetchFundData } from '../../../api';
+import {
+  fetchBalance,
+  fetchIncome,
+  fetchInvestmentData,
+  fetchAssetTransitionData,
+  fetchFundData,
+} from "../../../api";
 
-const BASE_URL = 'https://tech0-gen-7-step4-student-finalapp-14-c7end0axgtceeabg.japanwest-01.azurewebsites.net';
+const BASE_URL =
+  "https://tech0-gen-7-step4-student-finalapp-14-c7end0axgtceeabg.japanwest-01.azurewebsites.net";
 
 function DashboardLayout() {
   //資産運用状況
   const pathname = usePathname();
-  const userId = pathname.split('/').pop();
+  const userId = pathname.split("/").pop();
 
   const [balance, setBalance] = React.useState(null);
   const [income, setIncome] = React.useState(null);
@@ -32,7 +39,7 @@ function DashboardLayout() {
           setBalance(balanceData !== null ? balanceData : 0);
         } catch (error) {
           setBalance(0);
-          console.error('Error fetching balance:', error);
+          console.error("Error fetching balance:", error);
         }
 
         try {
@@ -40,7 +47,7 @@ function DashboardLayout() {
           setIncome(incomeData !== null ? incomeData : 0);
         } catch (error) {
           setIncome(0);
-          console.error('Error fetching income:', error);
+          console.error("Error fetching income:", error);
         }
 
         try {
@@ -49,15 +56,19 @@ function DashboardLayout() {
           setInvestmentData(investment !== null ? investment : []);
         } catch (error) {
           setInvestmentData([]);
-          console.error('Error fetching investment data:', error);
+          console.error("Error fetching investment data:", error);
         }
 
         try {
           const assetTransition = await fetchAssetTransitionData();
-          setAssetTransitionData(assetTransition !== null ? assetTransition : { labels: [], dataset1: [], dataset2: [] });
+          setAssetTransitionData(
+            assetTransition !== null
+              ? assetTransition
+              : { labels: [], dataset1: [], dataset2: [] }
+          );
         } catch (error) {
           setAssetTransitionData({ labels: [], dataset1: [], dataset2: [] });
-          console.error('Error fetching asset transition data:', error);
+          console.error("Error fetching asset transition data:", error);
         }
 
         try {
@@ -65,7 +76,7 @@ function DashboardLayout() {
           setFundData(fund !== null ? fund : []);
         } catch (error) {
           setFundData([]);
-          console.error('Error fetching fund data:', error);
+          console.error("Error fetching fund data:", error);
         }
       };
 
@@ -77,7 +88,13 @@ function DashboardLayout() {
     return <div>Error: {error}</div>;
   }
 
-  if (balance === null && income === null && investmentData === null && assetTransitionData === null && fundData === null) {
+  if (
+    balance === null &&
+    income === null &&
+    investmentData === null &&
+    assetTransitionData === null &&
+    fundData === null
+  ) {
     return <div>Loading...</div>;
   }
 
@@ -148,9 +165,9 @@ function DashboardLayout() {
   //フッターメニュー表示用（バックエンドデータではない）
   const footerButtons = [
     {
-      text: "口座確認",
+      text: "NISA\nカフェ",
       type: "single",
-      url: "https://www.mizuhobank.co.jp/internet_service/jikangai.html",
+      url: "https://www.mizuhobank.co.jp/nisa/nisa_cafe/index.html",
     },
     {
       text: "商品検索",

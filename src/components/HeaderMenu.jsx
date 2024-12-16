@@ -76,12 +76,12 @@ export function HeaderMenu() {
                 ホーム
               </Link>
               <a
-                href="https://www.mizuhobank.co.jp/internet_service/jikangai.html"
+                href="https://www.mizuhobank.co.jp/nisa/nisa_cafe/index.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"
               >
-                口座確認
+                NISAカフェ
               </a>
               <a
                 href="https://fund.www.mizuhobank.co.jp/webasp/mizuho-bk/fund/pc/search/fundlist.aspx?it=10"
