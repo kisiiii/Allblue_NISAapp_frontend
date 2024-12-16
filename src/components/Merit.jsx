@@ -2,7 +2,7 @@ import * as React from "react";
 
 export function Merit({ number, title, description, image, note, children }) {
   return (
-    <div className="flex flex-col px-3 py-5 w-full bg-indigo-100 rounded-lg mb-6">
+    <div className="flex flex-col px-3 py-5 w-full bg-indigo-200 rounded-lg mb-6">
       <div className="self-center text-center px-5 py-1.5 max-w-full text-xl font-bold text-blue-800 bg-red-200 rounded-3xl w-[155px]">
         メリット{number}
       </div>

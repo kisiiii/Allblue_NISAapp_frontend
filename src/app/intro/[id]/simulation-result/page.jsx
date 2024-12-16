@@ -76,7 +76,7 @@ export function SimResult() {
   };
 
   return (
-    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
+    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg  bg-gray-200">
       <Tittle />
 
       <main className="flex flex-col items-center px-3.5 mt-8 w-full">
@@ -87,7 +87,7 @@ export function SimResult() {
           30,000円
         </div>
 
-        <div className="flex flex-col px-5 pt-4 pb-7 mt-1.5 bg-indigo-100 rounded-lg w-full">
+        <div className="flex flex-col px-5 pt-4 pb-7 mt-1.5 bg-indigo-200 rounded-lg w-full">
           <div className="text-base text-center font-bold text-zinc-800">
             10年前に毎月30,000円を
             <br />

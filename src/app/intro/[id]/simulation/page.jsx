@@ -76,7 +76,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
+    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg bg-gray-200">
       <div className="mb-5">
         <Tittle />
       </div>

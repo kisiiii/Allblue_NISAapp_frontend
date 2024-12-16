@@ -10,10 +10,10 @@ export function IntroPage() {
   const { id } = params; // 動的な id を取得
 
   return (
-    <div className="flex overflow-hidden flex-col mx-auto max-w-screen-lg">
+    <div className="flex flex-col min-h-screen overflow-hidden mx-auto max-w-screen-lg">
       <Tittle />
-      <div className="flex flex-col items-center justify-center mt-20">
-        <div className="px-2 py-6 w-full font-bold text-xl text-blue-800  max-w-[327px] text-center">
+      <div className="flex flex-col flex-grow items-center justify-center bg-gray-200">
+        <div className="px-2 pb-6 w-full font-bold text-xl text-blue-800 max-w-[327px] text-center">
           あなたはご自身の
           <br />
           余剰資金（NISA投資にする資金）
@@ -32,7 +32,7 @@ export function IntroPage() {
           {/* 知っているリンク */}
           <Link
             href={`/home/${id}`}
-            className="flex-1 px-2 py-4 mt-12 w-full bg-red-200 hover:bg-red-300 rounded min-h-[48px] text-zinc-800 text-center"
+            className="flex-1 px-2 py-4 mt-12 mb-24 w-full bg-red-200 hover:bg-red-300 rounded min-h-[48px] text-zinc-800 text-center"
           >
             知っている
           </Link>
