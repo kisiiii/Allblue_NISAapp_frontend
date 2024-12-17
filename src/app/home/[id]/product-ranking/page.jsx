@@ -37,6 +37,9 @@ function PopularProducts() {
     const investmentFlag = activeTab === "つみたて投資枠" ? 1 : 2;
     try {
       const data = await fetchProductRanking(id, investmentFlag, selectedAttributes);
+      console.log("Fetched Data:", data); // データをログに出力
+      // ランクに基づいてデータをソート
+      const sortedData = data.sort((a, b) => a.rank - b.rank);
       setRankingData(data);
     } catch (error) {
       console.error("Error fetching product ranking:", error);
