@@ -56,7 +56,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
             borderColor: "#36A2EB",
             backgroundColor: "rgba(54, 162, 235, 0.5)",
             fill: true,
-            tension: 0.3,
+            tension: 0,
             pointRadius: 0, // マーカー非表示
           },
           {
@@ -65,7 +65,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
             borderColor: "#FF6384",
             backgroundColor: "rgba(255, 99, 132, 0.5)",
             fill: true,
-            tension: 0.3,
+            tension: 0,
             pointRadius: 0, // マーカー非表示
           },
         ],
@@ -73,6 +73,7 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+
         layout: {
           padding: {
             top: 0, // 上の余白
@@ -112,6 +113,17 @@ export function AssetTransition({ labels, dataset1, dataset2 }) {
           },
         },
         plugins: {
+          tooltip: {
+            enabled: true, // ツールチップを有効化
+            mode: "nearest",
+            intersect: false,
+            callbacks: {
+              label: function (tooltipItem) {
+                const value = tooltipItem.raw; // データポイントの値
+                return `${tooltipItem.dataset.label}: ${value}万`; // 表示するテキスト
+              },
+            },
+          },
           legend: {
             position: "bottom", // 必要に応じて "top" に変更
             labels: {

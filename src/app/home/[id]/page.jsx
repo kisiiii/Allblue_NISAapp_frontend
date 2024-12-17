@@ -16,9 +16,6 @@ import {
   fetchFundData,
 } from "../../../api";
 
-const BASE_URL =
-  "https://tech0-gen-7-step4-student-finalapp-14-c7end0axgtceeabg.japanwest-01.azurewebsites.net";
-
 function DashboardLayout() {
   //資産運用状況
   const pathname = usePathname();
@@ -27,7 +24,11 @@ function DashboardLayout() {
   const [balance, setBalance] = React.useState(null);
   const [income, setIncome] = React.useState(null);
   const [investmentData, setInvestmentData] = React.useState(null);
-  const [assetTransitionData, setAssetTransitionData] = React.useState(null);
+  const [assetTransitionData, setAssetTransitionData] = React.useState({
+    labels: [],
+    dataset1: [],
+    dataset2: [],
+  });
   const [fundData, setFundData] = React.useState(null);
   const [error, setError] = React.useState(null);
 
@@ -60,14 +61,20 @@ function DashboardLayout() {
         }
 
         try {
-          const assetTransition = await fetchAssetTransitionData();
+          const assetTransition = await fetchAssetTransitionData(userId);
           setAssetTransitionData(
-            assetTransition !== null
-              ? assetTransition
-              : { labels: [], dataset1: [], dataset2: [] }
+            assetTransition || {
+              labels: [],
+              dataset1: [],
+              dataset2: [],
+            }
           );
         } catch (error) {
-          setAssetTransitionData({ labels: [], dataset1: [], dataset2: [] });
+          setAssetTransitionData({
+            labels: [],
+            dataset1: [],
+            dataset2: [],
+          });
           console.error("Error fetching asset transition data:", error);
         }
 
