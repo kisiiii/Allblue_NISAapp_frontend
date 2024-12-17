@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function HeaderMenu() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -8,11 +9,15 @@ export function HeaderMenu() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  // userIdをパスから取得
+  const pathname = usePathname();
+  const match = pathname.match(/home\/(\d+)/);
+  const userId = match ? match[1] : null;
+
   return (
     <div className="bg-indigo-900 text-white">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3">
-        {/* メニューボタン */}
         <button
           className="btn btn-square btn-ghost text-white"
           onClick={toggleSidebar}
@@ -32,8 +37,6 @@ export function HeaderMenu() {
             />
           </svg>
         </button>
-
-        {/* ロゴ */}
         <div className="flex flex-1 justify-center">
           <img
             loading="lazy"
@@ -48,7 +51,6 @@ export function HeaderMenu() {
       {isSidebarOpen && (
         <div className="absolute top-0 left-0 h-screen w-64 bg-indigo-800 text-white z-50 shadow-lg">
           <div className="flex flex-col p-5">
-            {/* 閉じるボタン */}
             <button
               className="btn btn-square btn-ghost self-end text-white"
               onClick={toggleSidebar}
@@ -70,7 +72,7 @@ export function HeaderMenu() {
             </button>
             <nav className="mt-5 space-y-4">
               <Link
-                href="/home/1111"
+                href={`/home/${userId}`}
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"
               >
                 ホーム
@@ -92,13 +94,13 @@ export function HeaderMenu() {
                 商品検索
               </a>
               <Link
-                href="/home/1111/personal-ranking"
+                href={`/home/${userId}/personal-ranking`}
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"
               >
                 個人ランキング
               </Link>
               <Link
-                href="/home/1111/product-ranking"
+                href={`/home/${userId}/product-ranking`}
                 className="block px-3 py-2 text-sm font-medium bg-indigo-700 rounded hover:bg-indigo-600"
               >
                 人気ランキング

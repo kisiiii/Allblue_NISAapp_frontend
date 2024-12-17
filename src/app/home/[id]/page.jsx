@@ -53,7 +53,7 @@ function DashboardLayout() {
 
         try {
           const year = new Date().getFullYear();
-          const investment = await fetchInvestmentData(year);
+          const investment = await fetchInvestmentData(userId, year);
           setInvestmentData(investment !== null ? investment : []);
         } catch (error) {
           setInvestmentData([]);
@@ -184,12 +184,12 @@ function DashboardLayout() {
     {
       text: "個人\nランキング",
       type: "double",
-      url: "/home/1111/personal-ranking",
+      url: `/home/${userId}/personal-ranking`,
     },
     {
       text: "人気\nランキング",
       type: "double",
-      url: "/home/1111/product-ranking",
+      url: `/home/${userId}/product-ranking`,
     },
   ];
 

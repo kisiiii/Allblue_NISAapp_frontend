@@ -21,10 +21,10 @@ export const fetchIncome = async (userId) => {
   }
 };
 
-export const fetchInvestmentData = async (year) => {
+export const fetchInvestmentData = async (userId, year) => {
   try {
     const response = await axios.get(
-      `${BASE_URL}/investment-data?year=${year}`
+      `${BASE_URL}/investment-data/${userId}?year=${year}`
     );
     return response.data;
   } catch (error) {
