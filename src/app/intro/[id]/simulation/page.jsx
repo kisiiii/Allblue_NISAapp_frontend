@@ -85,7 +85,7 @@ export default function Home() {
         <div className="label-container">生年月日</div>
         <div className="grid grid-cols-3 gap-x-1 mx-1 justify-stretch mt-2">
           <select
-            className="w-full select select-bordered"
+            className="w-full select select-bordered bg-white text-black"
             value={year}
             onChange={(e) => setYear(e.target.value)}
           >
@@ -101,7 +101,7 @@ export default function Home() {
             )}
           </select>
           <select
-            className="w-full select select-bordered"
+            className="w-full select select-bordered bg-white text-black"
             value={month}
             onChange={(e) => setMonth(e.target.value)}
           >
@@ -115,7 +115,7 @@ export default function Home() {
             ))}
           </select>
           <select
-            className="w-full select select-bordered"
+            className="w-full select select-bordered bg-white text-black"
             value={day}
             onChange={(e) => setDay(e.target.value)}
           >
@@ -138,35 +138,43 @@ export default function Home() {
       </div>
       <div className="container mx-auto w-4/5 mb-5">
         <div className="label-container">ライフプラン</div>
-        <p className="font-bold mt-2">複数選択可</p>
+        <p className="font-bold mt-2 text-black">複数選択可</p>
         <div className="flex flex-col mx-1">
           <MultipleSelectArea labelList={life_plan} n_cols={2} />
         </div>
       </div>
       <div className="container mx-auto w-4/5 mb-5">
         <div className="label-container">現在の資産（貯蓄）</div>
-        <p className="font-bold mt-2">一番近いものを選択してください</p>
+        <p className="font-bold mt-2 text-black">
+          一番近いものを選択してください
+        </p>
         <div className="mx-1">
           <SelectArea labelList={savings} n_cols={2} />
         </div>
       </div>
       <div className="container mx-auto w-4/5 mb-5">
         <div className="label-container">ご本人様年収</div>
-        <p className="font-bold mt-2">一番近いものを選択してください</p>
+        <p className="font-bold mt-2 text-black">
+          一番近いものを選択してください
+        </p>
         <div className="flex flex-col mx-1">
           <SelectArea labelList={annual_income} n_cols={2} />
         </div>
       </div>
       <div className="container mx-auto w-4/5 mb-5">
         <div className="label-container">配偶者様年収</div>
-        <p className="font-bold mt-2">一番近いものを選択してください</p>
+        <p className="font-bold mt-2 text-black">
+          一番近いものを選択してください
+        </p>
         <div className="flex flex-col mx-1">
           <SelectArea labelList={annual_income_spouse} n_cols={2} />
         </div>
       </div>
       <div className="container mx-auto w-4/5 mb-5">
         <div className="label-container">月々の生活費</div>
-        <p className="font-bold mt-2">一番近いものを選択してください</p>
+        <p className="font-bold mt-2 text-black">
+          一番近いものを選択してください
+        </p>
         <div className="flex flex-col mx-1">
           <SelectArea labelList={monthly_consumption} n_cols={2} />
         </div>

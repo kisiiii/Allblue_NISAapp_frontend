@@ -27,7 +27,7 @@ const MultipleSelectArea = ({ labelList, n_cols }) => {
   };
 
   return (
-    <div className="grid gap-x-1" style={gridStyle}>
+    <div className="grid gap-x-1 text-black" style={gridStyle}>
       {labelList.map((label, index) => {
         return (
           // ボタンコンポーネントの呼び出し
