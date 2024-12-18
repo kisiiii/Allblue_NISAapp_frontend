@@ -1,32 +1,29 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, usePathname } from "next/navigation";
 import { Tittle } from "../../../../components/Tittle";
 import { SearchDescription } from "../../../../components/SearchDescription";
 import { RankingSearchButtons } from "../../../../components/RankingSearchButtons";
 import { TabSelector } from "../../../../components/TabSelector";
 import { AttributeSelector } from "../../../../components/AttributeSelector";
 import { TabContent } from "../../../../components/TabContent";
+import { fetchProductRanking } from "../../../../api";
 
 function PrePopularProducts() {
-  const router = useRouter();
-  const params = useParams();
-  const { id } = params;
-
-  const handleButtonClick = (path) => {
-    router.push(`${path}`);
-  };
-
+  const pathname = usePathname();
+  const id = pathname.split("/")[2]; // URLからユーザーIDを取得
   const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
 
   //ページ移動時は属性選択ボタンは選択された状態
   const [selectedAttributes, setSelectedAttributes] = React.useState({
-    年代: false,
-    年収: false,
-    家族構成: false,
+    年代: true,
+    年収: true,
+    家族構成: true,
     投資額: true,
   });
+
+  const [rankingData, setRankingData] = React.useState([]);
 
   const toggleAttribute = (attribute) => {
     setSelectedAttributes((prevState) => ({
@@ -35,43 +32,89 @@ function PrePopularProducts() {
     }));
   };
 
-  const rankingData = [
-    {
-      rank: 1,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 2,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 3,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 4,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-    {
-      rank: 5,
-      fundName: "eMAXIS Slim 米国株式（S&P500）",
-      price: "33,175",
-      priceChange: "+131",
-    },
-  ];
-
-  //ランキングを見るボタンを押すと実行されること
-  const handleActionClick = (id) => {
-    console.log(`${id} clicked`);
+  // ランキングを見るボタンを押すと実行されること
+  const handleActionClick = async () => {
+    const investmentFlag = activeTab === "つみたて投資枠" ? 1 : 2;
+    try {
+      const data = await fetchProductRanking(id, investmentFlag, selectedAttributes);
+      console.log("Fetched Data:", data); // データをログに出力
+      // ランクに基づいてデータをソート
+      const sortedData = data.sort((a, b) => a.rank - b.rank);
+      setRankingData(data);
+    } catch (error) {
+      console.error("Error fetching product ranking:", error);
+    }
   };
+  React.useEffect(() => {
+    if (id) {
+      console.log("User ID:", id); // ユーザーIDをログに出力して確認
+      handleActionClick();
+    }
+  }, [id]);
+
+// function PrePopularProducts() {
+//   const router = useRouter();
+//   const params = useParams();
+//   const { id } = params;
+
+//   const handleButtonClick = (path) => {
+//     router.push(`${path}`);
+//   };
+
+//   const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
+
+//   //ページ移動時は属性選択ボタンは選択された状態
+//   const [selectedAttributes, setSelectedAttributes] = React.useState({
+//     年代: false,
+//     年収: false,
+//     家族構成: false,
+//     投資額: true,
+//   });
+
+//   const toggleAttribute = (attribute) => {
+//     setSelectedAttributes((prevState) => ({
+//       ...prevState,
+//       [attribute]: !prevState[attribute],
+//     }));
+//   };
+
+//   const rankingData = [
+//     {
+//       rank: 1,
+//       fundName: "eMAXIS Slim 米国株式（S&P500）",
+//       price: "33,175",
+//       priceChange: "+131",
+//     },
+//     {
+//       rank: 2,
+//       fundName: "eMAXIS Slim 米国株式（S&P500）",
+//       price: "33,175",
+//       priceChange: "+131",
+//     },
+//     {
+//       rank: 3,
+//       fundName: "eMAXIS Slim 米国株式（S&P500）",
+//       price: "33,175",
+//       priceChange: "+131",
+//     },
+//     {
+//       rank: 4,
+//       fundName: "eMAXIS Slim 米国株式（S&P500）",
+//       price: "33,175",
+//       priceChange: "+131",
+//     },
+//     {
+//       rank: 5,
+//       fundName: "eMAXIS Slim 米国株式（S&P500）",
+//       price: "33,175",
+//       priceChange: "+131",
+//     },
+//   ];
+
+//   //ランキングを見るボタンを押すと実行されること
+//   const handleActionClick = (id) => {
+//     console.log(`${id} clicked`);
+//   };
 
   return (
     <div className="flex overflow-hidden flex-col pb-3.5 mx-auto w-full bg-gray-200 max-w-screen-lg">
