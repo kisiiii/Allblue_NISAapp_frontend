@@ -45,9 +45,9 @@ export const fetchAssetTransitionData = async (userId) => {
   }
 };
 
-export const fetchFundData = async () => {
+export const fetchFundData = async (userId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/fund-data`);
+    const response = await axios.get(`${BASE_URL}/fund-data/${userId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching fund data:", error);
