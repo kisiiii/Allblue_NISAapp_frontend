@@ -3,7 +3,8 @@ import React from "react";
 export function PersonalRanking({ myRanking, parameter }) {
   // ランキングを5分割し、現在の順位がどの範囲にあるか計算
   const totalUsers = parameter;
-  const rankingTier = Math.ceil(myRanking / (totalUsers / 5));
+  // 分割幅が1人未満の場合、最低でも1人に対して1ランクを割り当てるよう調整
+  const rankingTier = Math.min(5, Math.ceil(myRanking / Math.max(totalUsers / 5, 1)));
 
   // 表示する画像を決定
   const getRankImage = () => {
