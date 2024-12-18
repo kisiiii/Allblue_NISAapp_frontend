@@ -79,7 +79,7 @@ function DashboardLayout() {
         }
 
         try {
-          const fund = await fetchFundData();
+          const fund = await fetchFundData(userId);
           setFundData(fund !== null ? fund : []);
         } catch (error) {
           setFundData([]);
