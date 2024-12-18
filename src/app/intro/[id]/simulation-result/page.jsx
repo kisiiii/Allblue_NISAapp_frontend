@@ -98,12 +98,12 @@ export function SimResult() {
             <div className="text-center mt-1.5 text-xl">増えていました！</div>
           </div>
 
-{/*           <img
+          <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b46e8c1e93bcab617cf8b86f5d198ec8834e8a95ef76d512cb4a149b3252e168?placeholderIfAbsent=true&apiKey=830249011bfc4b9a9e2dddb095d90bfd"
+            src="/simulation-graph.png"
             alt=""
             className="object-contain mt-6 w-full aspect-[1.74]"
-          /> */}
+          />
 
           
 
