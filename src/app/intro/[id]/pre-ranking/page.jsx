@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter, useParams, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Tittle } from "../../../../components/Tittle";
 import { SearchDescription } from "../../../../components/SearchDescription";
 import { RankingSearchButtons } from "../../../../components/RankingSearchButtons";
@@ -12,6 +12,7 @@ import { fetchProductRanking } from "../../../../api";
 
 function PrePopularProducts() {
   const pathname = usePathname();
+  const router = useRouter(); // useRouter フックを使用
   const id = pathname.split("/")[2]; // URLからユーザーIDを取得
   const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
 
@@ -40,11 +41,12 @@ function PrePopularProducts() {
       console.log("Fetched Data:", data); // データをログに出力
       // ランクに基づいてデータをソート
       const sortedData = data.sort((a, b) => a.rank - b.rank);
-      setRankingData(data);
+      setRankingData(sortedData);
     } catch (error) {
       console.error("Error fetching product ranking:", error);
     }
   };
+
   React.useEffect(() => {
     if (id) {
       console.log("User ID:", id); // ユーザーIDをログに出力して確認
@@ -52,69 +54,9 @@ function PrePopularProducts() {
     }
   }, [id]);
 
-// function PrePopularProducts() {
-//   const router = useRouter();
-//   const params = useParams();
-//   const { id } = params;
-
-//   const handleButtonClick = (path) => {
-//     router.push(`${path}`);
-//   };
-
-//   const [activeTab, setActiveTab] = React.useState("つみたて投資枠");
-
-//   //ページ移動時は属性選択ボタンは選択された状態
-//   const [selectedAttributes, setSelectedAttributes] = React.useState({
-//     年代: false,
-//     年収: false,
-//     家族構成: false,
-//     投資額: true,
-//   });
-
-//   const toggleAttribute = (attribute) => {
-//     setSelectedAttributes((prevState) => ({
-//       ...prevState,
-//       [attribute]: !prevState[attribute],
-//     }));
-//   };
-
-//   const rankingData = [
-//     {
-//       rank: 1,
-//       fundName: "eMAXIS Slim 米国株式（S&P500）",
-//       price: "33,175",
-//       priceChange: "+131",
-//     },
-//     {
-//       rank: 2,
-//       fundName: "eMAXIS Slim 米国株式（S&P500）",
-//       price: "33,175",
-//       priceChange: "+131",
-//     },
-//     {
-//       rank: 3,
-//       fundName: "eMAXIS Slim 米国株式（S&P500）",
-//       price: "33,175",
-//       priceChange: "+131",
-//     },
-//     {
-//       rank: 4,
-//       fundName: "eMAXIS Slim 米国株式（S&P500）",
-//       price: "33,175",
-//       priceChange: "+131",
-//     },
-//     {
-//       rank: 5,
-//       fundName: "eMAXIS Slim 米国株式（S&P500）",
-//       price: "33,175",
-//       priceChange: "+131",
-//     },
-//   ];
-
-//   //ランキングを見るボタンを押すと実行されること
-//   const handleActionClick = (id) => {
-//     console.log(`${id} clicked`);
-//   };
+  const handleButtonClick = (path) => {
+    router.push(path); // ルートを変更
+  };
 
   return (
     <div className="flex overflow-hidden flex-col pb-3.5 mx-auto w-full bg-gray-200 max-w-screen-lg">
@@ -130,14 +72,14 @@ function PrePopularProducts() {
           <AttributeSelector
             selectedAttributes={selectedAttributes}
             toggleAttribute={toggleAttribute}
-          />{" "}
+          />
           {/* ↓ランキング検索ボタン */}
-          <RankingSearchButtons onClick={handleActionClick} />{" "}
+          <RankingSearchButtons onClick={handleActionClick} />
         </div>
 
         <div className="flex flex-col pb-6 mt-5 w-full leading-none bg-white rounded-md">
           {/* ↓タブデザイン */}
-          <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />{" "}
+          <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />
           {/* ↓タブの切り替え設定＋ランキングデザイン */}
           <TabContent activeTab={activeTab} rankingData={rankingData} />
         </div>
