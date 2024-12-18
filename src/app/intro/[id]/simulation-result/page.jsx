@@ -97,15 +97,12 @@ export function SimResult() {
             <div className="text-center mt-1.5 text-4xl">546万円*</div>
             <div className="text-center mt-1.5 text-xl">増えていました！</div>
           </div>
-
           <img
             loading="lazy"
             src="/simulation-graph.png"
             alt=""
-            className="object-contain mt-6 w-full aspect-[1.74]"
+            className="object-contain mt-6 w-full aspect-[1.74] md:w-3/4 md:h-auto"
           />
-
-          
 
           <div className="flex flex-col mt-1">
             <div className="pr-2.5 self-end text-xs font-bold text-zinc-800">

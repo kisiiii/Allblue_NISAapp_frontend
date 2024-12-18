@@ -7,7 +7,7 @@ import { SearchDescription } from "../../../../components/SearchDescription";
 import { RankingSearchButtons } from "../../../../components/RankingSearchButtons";
 import { TabSelector } from "../../../../components/TabSelector";
 import { AttributeSelector } from "../../../../components/AttributeSelector";
-import { TabContent } from "../../../../components/TabContent";
+import { TabContent_intro } from "../../../../components/TabContent_intro";
 import { fetchProductRanking } from "../../../../api";
 
 function PrePopularProducts() {
@@ -81,7 +81,7 @@ function PrePopularProducts() {
           {/* ↓タブデザイン */}
           <TabSelector activeTab={activeTab} setActiveTab={setActiveTab} />
           {/* ↓タブの切り替え設定＋ランキングデザイン */}
-          <TabContent activeTab={activeTab} rankingData={rankingData} />
+          <TabContent_intro activeTab={activeTab} rankingData={rankingData} />
         </div>
 
         <button

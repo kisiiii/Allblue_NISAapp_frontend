@@ -1,7 +1,7 @@
 import React from "react";
-import { RankingCard } from "./RankingCard"; //ランキングデザイン
+import { RankingCard_intro } from "./RankingCard_intro"; //ランキングデザイン
 
-export function TabContent({ activeTab, rankingData }) {
+export function TabContent_intro({ activeTab, rankingData }) {
   return (
     <div className="p-4">
       {activeTab === "つみたて投資枠" && (
@@ -14,7 +14,7 @@ export function TabContent({ activeTab, rankingData }) {
           </div> */}
           <div className="flex flex-col gap-5 mt-5">
             {rankingData.map((item, index) => (
-              <RankingCard key={index} {...item} />
+              <RankingCard_intro key={index} {...item} />
             ))}
           </div>
         </div>
@@ -29,7 +29,7 @@ export function TabContent({ activeTab, rankingData }) {
           </div> */}
           <div className="flex flex-col gap-5 mt-5">
             {rankingData.map((item, index) => (
-              <RankingCard key={index} {...item} />
+              <RankingCard_intro key={index} {...item} />
             ))}
           </div>
         </div>
@@ -38,4 +38,4 @@ export function TabContent({ activeTab, rankingData }) {
   );
 }
 
-export default TabContent;
+export default TabContent_intro;
